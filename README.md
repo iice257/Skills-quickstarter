@@ -29,6 +29,16 @@ After installing skills in Codex, restart Codex so the new skills are picked up.
 - A lightweight reference for MCP configs I commonly use.
 - A shareable link for new users who want a useful starter kit without hunting through local files.
 
+## Launch Workflow
+
+Use `idea-launcher` and `x-publisher` together when a rough product idea needs to become a shareable repo:
+
+1. Start with `idea-launcher` to interview the idea, cut the scope, generate the project plan, and create a runnable starter.
+2. Build the smallest useful version and keep the README focused on the problem, demo, install path, and next step.
+3. Use `x-publisher` to draft a short launch post or thread, validate character counts, and open a final composer link for manual review.
+
+This keeps the repo useful before promotion and gives the launch post a concrete artifact to point at.
+
 ## Recommended Starter Pack
 
 | Skill | Best for | Install link |
@@ -41,6 +51,7 @@ After installing skills in Codex, restart Codex so the new skills are picked up.
 | `gh-fix-ci` | Debugging failing GitHub Actions | [Install](https://github.com/iice257/Skills/tree/main/skills/gh-fix-ci) |
 | `gh-address-comments` | Handling PR review comments | [Install](https://github.com/iice257/Skills/tree/main/skills/gh-address-comments) |
 | `idea-launcher` | Turning rough ideas into buildable plans | [Install](https://github.com/iice257/Skills/tree/main/skills/idea-launcher) |
+| `x-publisher` | Drafting repo launch posts and threads | [Install](https://github.com/iice257/Skills/tree/main/skills/x-publisher) |
 
 ## Skills
 
