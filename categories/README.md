@@ -20,5 +20,15 @@ $skill-installer install the skills listed at https://github.com/iice257/Skills/
 | `lightweight-quickstart` | Small starter pack. |
 | `full-startup` | Everything in `all/`. |
 | `web-development-setup` | Frontend, design, testing, CI, and deploy. |
-| `debugging` | Browser, screenshots, PR checks, and review workflows. |
+| `design-ui` | Premium UI design and redesign. |
+| `frontend-visuals` | Image-led frontend and visual direction. |
+| `browser-testing` | Browser automation, screenshots, and verification. |
+| `debugging` | General debugging workflows. |
+| `github-ci` | GitHub Actions and PR review workflow. |
+| `deployment` | Vercel, Netlify, and deploy readiness. |
 | `cybersec` | Security review and ownership mapping. |
+| `content-media` | Image, audio, transcription, screenshot, and publishing work. |
+| `documents-office` | Docs, PDFs, and transcription-heavy document work. |
+| `ai-api` | Gemini, OpenAI image/audio, and transcription APIs. |
+| `mobile-desktop` | WinUI, screenshots, and app-adjacent workflows. |
+| `planning-productivity` | Idea shaping, skill discovery, handoff, and complete output. |

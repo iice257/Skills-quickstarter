@@ -1,10 +1,10 @@
-# Custom Skills
+# Originals
 
-Profile/custom skills and other non-stock additions.
+Skills authored/customized by me and other non-stock additions.
 
 For installation, the most reliable paths are the matching canonical copies under `all/`.
 
-| Custom skill | Canonical install path |
+| Original skill | Canonical install path |
 | --- | --- |
 | `design-taste-frontend` | `all/design-taste-frontend` |
 | `redesign-existing-projects` | `all/redesign-existing-projects` |

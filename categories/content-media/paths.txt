@@ -1,0 +1,6 @@
+all/imagegen
+all/speech
+all/transcribe
+all/screenshot
+all/x-publisher
+all/hatch-pet
