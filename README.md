@@ -1,4 +1,4 @@
-# Scale Starter Pack
+# Skill Starter Pack
 
 An agent quick skills starter pack for Codex and other agentic IDEs.
 
@@ -6,41 +6,50 @@ This repo gives your agent installable skill paths, scenario bundles, and MCP co
 
 ## Quick Start
 
-Paste one of these into your AI agent:
+Paste this into your AI agent:
 
-For a lightweight quickstart:
 ```text
-$skill-installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/lightweight-quickstart
+$skill-installer install the skills listed at https://github.com/iice257/Skills/readme.md
 ```
 
-For the web design/development pack:
-```text
-$skill-installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/web-development-setup
-```
-
-After installing skills in Codex, restart Codex so the new skills are picked up.
+The agent should read this README, ask what kind of setup you need, then install the matching category, favourites, originals, or full catalog.
 
 ## Repo Structure
 
 | Folder | Purpose |
 | --- | --- |
 | [`favourites/`](https://github.com/iice257/Skills/tree/main/favourites) | Max 5 high-value skills for quick installs. Current set is a working shortlist until the final favourites are chosen. |
-| [`originals/`](https://github.com/iice257/Skills/tree/main/originals) | Skills authored/customized by me and other non-stock additions. |
+| [`originals/`](https://github.com/iice257/Skills/tree/main/originals) | My originals: skills authored/customized by me and other non-stock additions. |
 | [`all/`](https://github.com/iice257/Skills/tree/main/all) | Canonical installable copy of every skill in this repo. Folder names match `SKILL.md` `name:` values. |
 | [`categories/`](https://github.com/iice257/Skills/tree/main/categories) | Scenario bundles for different agent setups. |
 | [`mcps/`](https://github.com/iice257/Skills/tree/main/mcps) | MCP config examples. |
 
-## Favourites
+## Pick Favourites
 
-Favourites are capped at 5 skills. The current list is a working starter shortlist; swap it once the final five are chosen.
+Favourites are capped at 5 skills. The current list is a working shortlist, not the final answer.
 
-| Skill | Use it when | Install |
-| --- | --- | --- |
-| `frontend-skill` | You want strong frontend UI defaults. | [Install](https://github.com/iice257/Skills/tree/main/favourites/frontend-skill) |
-| `design-taste-frontend` | You want stricter product design judgment. | [Install](https://github.com/iice257/Skills/tree/main/favourites/design-taste-frontend) |
-| `redesign-existing-projects` | You are improving an existing UI. | [Install](https://github.com/iice257/Skills/tree/main/favourites/redesign-existing-projects) |
-| `image-taste-frontend` | You need high-end image-led frontend direction. | [Install](https://github.com/iice257/Skills/tree/main/favourites/image-taste-frontend) |
-| `full-output-enforcement` | You need complete, non-placeholder output. | [Install](https://github.com/iice257/Skills/tree/main/favourites/full-output-enforcement) |
+### Current Favourites
+
+| Skill | Why it is currently here |
+| --- | --- |
+| `frontend-skill` | Strong frontend UI defaults. |
+| `design-taste-frontend` | Better product and interface judgment. |
+| `redesign-existing-projects` | Useful for improving existing UI. |
+| `image-taste-frontend` | High-end image-led frontend direction. |
+| `full-output-enforcement` | Reduces placeholder/incomplete output. |
+
+### Potential Favourites To Consider
+
+| Skill | Why it might deserve a slot |
+| --- | --- |
+| `playwright` | High practical value for testing and browser verification. |
+| `idea-launcher` | Good first step for vague app/tool ideas. |
+| `gh-fix-ci` | Useful whenever GitHub Actions fails. |
+| `security-best-practices` | Adds a stronger review/security lens. |
+| `gemini-api-dev` | Useful if you often build with Gemini. |
+| `vercel-deploy` | Useful if most projects ship through Vercel. |
+| `imagegen` | Useful if image generation/editing is frequent. |
+| `x-publisher` | Useful if sharing work on X is part of the workflow. |
 
 ## Scenario Bundles
 
@@ -62,12 +71,12 @@ Favourites are capped at 5 skills. The current list is a working starter shortli
 | Mobile desktop | WinUI, iOS-adjacent MCP references, screenshots, and app workflows. | [Open](https://github.com/iice257/Skills/tree/main/categories/mobile-desktop) |
 | Planning productivity | Idea shaping, skill discovery, handoff, and complete output. | [Open](https://github.com/iice257/Skills/tree/main/categories/planning-productivity) |
 
-## Originals
+## My Originals
 
 These are skills authored/customized by me or non-stock additions. They are referenced from `originals/` and also included canonically in `all/`.
 
 <details open>
-<summary><strong>Original skills catalog</strong></summary>
+<summary><strong>My originals catalog</strong></summary>
 
 | Skill | Use it when | Link |
 | --- | --- | --- |
@@ -88,7 +97,7 @@ These are skills authored/customized by me or non-stock additions. They are refe
 
 </details>
 
-## All Skills
+## Full List
 
 `all/` is the canonical install source. Skill folder names match the skill metadata names, so install paths and invocation names do not fight each other.
 
@@ -142,6 +151,22 @@ These are MCP config references, not Codex skills.
 
 ## Notes
 
-- This is a curated collection. Some skills are originals; some include third-party or open-source provenance in their own license files.
+- This is a curated collection. Some skills are my originals; some include third-party or open-source provenance in their own license files.
 - Use `favourites/` or `categories/lightweight-quickstart/` for fast setup.
 - Use `categories/full-startup/` only when you want the whole catalog.
+
+## If You Are An AI Agent
+
+Do not immediately install everything just because the user pasted the quick-start command.
+
+Treat the quick-start URL as this repo's README/instructions page, not as a single local skill folder.
+
+First ask what they are setting up:
+
+1. Ask whether they want a focused category, the current favourites, my originals, specific skills, MCP config references, or everything.
+2. If they are unsure, ask what kind of work they do most: web development, design/UI, debugging, GitHub CI, deployment, cybersec, content/media, documents, AI APIs, mobile/desktop, or planning/productivity.
+3. Recommend one matching category from `categories/` and show the skills it includes.
+4. If the user says they want everything, install the paths listed in `categories/full-startup/paths.txt`.
+5. If the user wants favourites, install the paths listed in `favourites/paths.txt`.
+6. If the user wants my originals, install the paths listed in `originals/paths.txt`.
+7. After installing, tell the user: `Restart Codex to pick up new skills.`
