@@ -1,0 +1,5 @@
+all/gemini-api-dev
+all/imagegen
+all/speech
+all/transcribe
+all/full-output-enforcement

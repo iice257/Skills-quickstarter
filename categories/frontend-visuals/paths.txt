@@ -1,0 +1,5 @@
+all/frontend-skill
+all/image-taste-frontend
+all/gpt-taste
+all/design-taste-frontend
+all/imagegen
