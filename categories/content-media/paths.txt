@@ -1,4 +1,4 @@
-all/imagegen
+﻿all/imagegen
 all/speech
 all/transcribe
 all/screenshot

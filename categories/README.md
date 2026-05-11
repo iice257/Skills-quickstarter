@@ -5,7 +5,7 @@ Scenario bundles for installing a focused set of skills.
 Each category has:
 
 - `README.md`: human-readable purpose and install prompt.
-- `paths.txt`: canonical install paths under `all/`.
+- `paths.txt`: install paths under `all/` or a provider pack folder.
 
 Paste a category link into your agent with `$skill-installer`, for example:
 
@@ -18,7 +18,7 @@ $skill-installer install the skills listed at https://github.com/iice257/Skills/
 | Bundle | Purpose |
 | --- | --- |
 | `lightweight-quickstart` | Small starter pack. |
-| `full-startup` | Everything in `all/`. |
+| `full-startup` | Everything installable in this repo, including provider packs. |
 | `web-development-setup` | Frontend, design, testing, CI, and deploy. |
 | `design-ui` | Premium UI design and redesign. |
 | `frontend-visuals` | Image-led frontend and visual direction. |
@@ -32,3 +32,7 @@ $skill-installer install the skills listed at https://github.com/iice257/Skills/
 | `ai-api` | Gemini, OpenAI image/audio, and transcription APIs. |
 | `mobile-desktop` | WinUI, screenshots, and app-adjacent workflows. |
 | `planning-productivity` | Idea shaping, skill discovery, handoff, and complete output. |
+| `openai-official` | OpenAI skills from GitHub and local Codex OpenAI cache entries. |
+| `claude-code` | Anthropic GitHub skills and local Claude Code-style skills. |
+| `gemini` | Gemini CLI GitHub skills and local Gemini-related skills. |
+| `cursor` | Cursor rules/skill locations checked; no installable `SKILL.md` files found yet. |

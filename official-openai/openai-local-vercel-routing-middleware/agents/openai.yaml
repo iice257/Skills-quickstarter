@@ -1,0 +1,3 @@
+﻿interface:
+  display_name: "Routing Middleware"
+  short_description: "Vercel Routing Middleware guidance â€” request interception before cache, rewrites, redirects, personalization"

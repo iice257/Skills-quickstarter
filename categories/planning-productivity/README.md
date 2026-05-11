@@ -1,4 +1,4 @@
-# Planning Productivity
+﻿# Planning Productivity
 
 Idea shaping, skill discovery, handoff, and complete output.
 

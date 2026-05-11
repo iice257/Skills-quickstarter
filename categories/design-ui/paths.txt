@@ -1,4 +1,4 @@
-all/design-taste-frontend
+﻿all/design-taste-frontend
 all/redesign-existing-projects
 all/high-end-visual-design
 all/minimalist-ui
