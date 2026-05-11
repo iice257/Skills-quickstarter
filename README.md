@@ -13,7 +13,7 @@ For a lightweight quickstart:
 $skill-installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/lightweight-quickstart
 ```
 
-For thr web design/development pack:
+For the web design/development pack:
 ```text
 $skill-installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/web-development-setup
 ```
