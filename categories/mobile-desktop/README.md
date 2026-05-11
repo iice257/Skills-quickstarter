@@ -1,4 +1,4 @@
-# Mobile Desktop
+﻿# Mobile Desktop
 
 Desktop app and app-adjacent workflows.
 

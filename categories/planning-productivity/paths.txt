@@ -1,4 +1,4 @@
-all/idea-launcher
+﻿all/idea-launcher
 all/find-skills
 all/full-output-enforcement
 all/imessage-handoff

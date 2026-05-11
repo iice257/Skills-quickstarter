@@ -1,4 +1,4 @@
-# Frontend Visuals
+﻿# Frontend Visuals
 
 Image-led frontend work, landing pages, hero sections, and visual direction.
 

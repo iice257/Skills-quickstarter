@@ -1,4 +1,4 @@
-# AI API
+﻿# AI API
 
 AI API development and media model workflows.
 

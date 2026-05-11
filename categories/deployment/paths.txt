@@ -1,4 +1,4 @@
-all/vercel-deploy
+﻿all/vercel-deploy
 all/netlify-deploy
 all/gh-fix-ci
 all/playwright

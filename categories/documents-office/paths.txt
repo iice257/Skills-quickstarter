@@ -1,4 +1,4 @@
-all/doc
+﻿all/doc
 all/pdf
 all/transcribe
 all/screenshot

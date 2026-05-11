@@ -1,4 +1,4 @@
-all/winui-app
+﻿all/winui-app
 all/screenshot
 all/playwright
 all/design-taste-frontend

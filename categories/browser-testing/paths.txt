@@ -1,4 +1,4 @@
-all/playwright
+﻿all/playwright
 all/playwright-interactive
 all/screenshot
 all/frontend-skill

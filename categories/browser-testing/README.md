@@ -1,4 +1,4 @@
-# Browser Testing
+﻿# Browser Testing
 
 Browser automation, screenshots, and rendered UI verification.
 

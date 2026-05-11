@@ -1,6 +1,6 @@
 # Full Startup
 
-Install every canonical skill in this repo.
+Install every installable skill in this repo, including provider packs.
 
 Paste into your agent:
 
