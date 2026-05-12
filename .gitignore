@@ -1,0 +1,7 @@
+node_modules/
+dist/
+*.log
+verification-*.png
+cdp-list.json
+
+.vercel
