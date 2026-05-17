@@ -5,7 +5,7 @@ Skills for browser checks, screenshots, CI failures, and PR feedback.
 Paste into your agent:
 
 ```text
-$skill-installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/debugging
+$skill-starter install https://github.com/iice257/Skills/tree/main/categories/debugging
 ```
 
 ## Skills

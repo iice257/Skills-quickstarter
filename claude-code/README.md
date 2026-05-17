@@ -1,4 +1,4 @@
-﻿# Claude Code Skills
+# Claude Code Skills
 
 Anthropic GitHub skills plus Claude Code-style local `SKILL.md` folders found on this machine. This pack is separate from my originals and favourites.
 
@@ -39,5 +39,5 @@ GitHub source checked: https://github.com/anthropics/skills
 Install prompt:
 
 ```text
-Skill Installer install the skills listed at https://github.com/iice257/Skills/tree/main/claude-code
+$skill-starter install https://github.com/iice257/Skills/tree/main/claude-code
 ```

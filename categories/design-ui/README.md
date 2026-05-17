@@ -1,9 +1,9 @@
-﻿# Design UI
+# Design UI
 
 Premium UI design, redesign, and product interface judgment.
 
 ```text
-$skill-installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/design-ui
+$skill-starter install https://github.com/iice257/Skills/tree/main/categories/design-ui
 ```
 
 | Skill | Why |

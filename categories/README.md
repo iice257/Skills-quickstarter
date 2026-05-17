@@ -7,10 +7,10 @@ Each category has:
 - `README.md`: human-readable purpose and install prompt.
 - `paths.txt`: install paths under `all/` or a provider pack folder.
 
-Paste a category link into your agent with `$skill-installer`, for example:
+Paste a category link into your agent with `$skill-starter`, for example:
 
 ```text
-$skill-installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/lightweight-quickstart
+$skill-starter install https://github.com/iice257/Skills/tree/main/categories/lightweight-quickstart
 ```
 
 ## Available Bundles

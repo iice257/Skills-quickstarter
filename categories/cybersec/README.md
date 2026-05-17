@@ -5,7 +5,7 @@ Security review, ownership mapping, CI triage, and browser verification.
 Paste into your agent:
 
 ```text
-$skill-installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/cybersec
+$skill-starter install https://github.com/iice257/Skills/tree/main/categories/cybersec
 ```
 
 ## Skills

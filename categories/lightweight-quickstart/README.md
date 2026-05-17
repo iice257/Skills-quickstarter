@@ -5,7 +5,7 @@ Small starter pack for a fresh Codex setup.
 Paste into your agent:
 
 ```text
-$skill-installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/lightweight-quickstart
+$skill-starter install https://github.com/iice257/Skills/tree/main/categories/lightweight-quickstart
 ```
 
 ## Skills

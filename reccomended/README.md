@@ -23,5 +23,5 @@ Top 15 all-round dev workflow skills. This pack intentionally avoids duplicate e
 Install prompt:
 
 ```text
-Skill Installer install the skills listed at https://github.com/iice257/Skills/tree/main/reccomended
+$skill-starter install https://github.com/iice257/Skills/tree/main/reccomended
 ```

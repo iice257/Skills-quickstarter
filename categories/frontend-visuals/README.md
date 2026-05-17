@@ -1,9 +1,9 @@
-﻿# Frontend Visuals
+# Frontend Visuals
 
 Image-led frontend work, landing pages, hero sections, and visual direction.
 
 ```text
-$skill-installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/frontend-visuals
+$skill-starter install https://github.com/iice257/Skills/tree/main/categories/frontend-visuals
 ```
 
 | Skill | Why |
