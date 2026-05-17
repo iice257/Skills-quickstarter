@@ -1,7 +1,10 @@
-import { ArrowRight } from "lucide-react";
+import { useState } from "react";
 import { ecosystem, providers, stats } from "../data";
+import { ExpandableInstallCard } from "./ExpandableInstallCard";
 
 export function EcosystemProviders() {
+  const [expanded, setExpanded] = useState<string | null>(null);
+
   return (
     <section className="ecosystem-section">
       <div className="proof-panel">
@@ -39,26 +42,26 @@ export function EcosystemProviders() {
           </div>
         </div>
         <div className="provider-grid">
-          {providers.map((provider) => {
-            const Icon = provider.icon;
+          {providers.map((provider, index) => {
             return (
-              <a
-                className="provider-card"
-                href={provider.href}
-                target="_blank"
-                rel="noreferrer"
+              <ExpandableInstallCard
                 key={provider.name}
-              >
-                <span>
-                  <Icon aria-hidden="true" />
-                </span>
-                <strong>{provider.name}</strong>
-                <p>{provider.description}</p>
-                <em>
-                  Open pack
-                  <ArrowRight aria-hidden="true" />
-                </em>
-              </a>
+                item={{
+                  title: provider.name,
+                  description: provider.description,
+                  command: provider.command,
+                  summary: provider.summary,
+                  includes: provider.includes,
+                  icon: provider.icon,
+                  action: "Expand pack"
+                }}
+                index={index}
+                variant="provider"
+                expanded={expanded === provider.name}
+                onToggle={() =>
+                  setExpanded((current) => (current === provider.name ? null : provider.name))
+                }
+              />
             );
           })}
         </div>

@@ -1,7 +1,10 @@
-import { ArrowRight } from "lucide-react";
+import { useState } from "react";
 import { needCards } from "../data";
+import { ExpandableInstallCard } from "./ExpandableInstallCard";
 
 export function NeedCards() {
+  const [expanded, setExpanded] = useState<string | null>(null);
+
   return (
     <section id="categories" className="paths-section">
       <div className="section-header">
@@ -17,29 +20,23 @@ export function NeedCards() {
       </div>
       <div className="need-grid">
         {needCards.map((card, index) => {
-          const Icon = card.icon;
-          const external = card.href.startsWith("http");
-
           return (
-            <a
+            <ExpandableInstallCard
               key={card.title}
-              className="path-card"
-              href={card.href}
-              target={external ? "_blank" : undefined}
-              rel={external ? "noreferrer" : undefined}
-            >
-              <span className="card-accent" aria-hidden="true" />
-              <span className="card-num">{String(index + 1).padStart(2, "0")}</span>
-              <span className="icon-chip">
-                <Icon aria-hidden="true" />
-              </span>
-              <strong>{card.title}</strong>
-              <p>{card.text}</p>
-              <span className="card-action">
-                {card.action}
-                <ArrowRight aria-hidden="true" />
-              </span>
-            </a>
+              item={{
+                title: card.title,
+                description: card.text,
+                command: card.command,
+                summary: card.summary,
+                includes: card.includes,
+                icon: card.icon,
+                action: card.action
+              }}
+              index={index}
+              variant="path"
+              expanded={expanded === card.title}
+              onToggle={() => setExpanded((current) => (current === card.title ? null : card.title))}
+            />
           );
         })}
       </div>
