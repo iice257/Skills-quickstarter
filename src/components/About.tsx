@@ -1,4 +1,4 @@
-import { CheckCircle2, Clock3, PackageOpen, ShieldCheck } from "lucide-react";
+import { CheckCircle2, Clock3, PackageOpen, Sparkles } from "lucide-react";
 
 const notes = [
   {
@@ -12,9 +12,9 @@ const notes = [
     icon: PackageOpen
   },
   {
-    title: "MCPs are references",
-    text: "The MCP folder shows config examples. Those files are not Codex skill installs.",
-    icon: ShieldCheck
+    title: "Start from the right scope",
+    text: "Pick categories, scenarios, favourites, originals, or provider packs instead of installing blindly.",
+    icon: Sparkles
   },
   {
     title: "Restart after install",
@@ -28,11 +28,11 @@ export function About() {
     <section id="about" className="about-band">
       <div>
         <span>Curated. Focused. Agent-ready.</span>
-        <h2>Built as a fast setup guide, not a mystery installer.</h2>
+        <h2>A practical index for agent workflows.</h2>
         <p>
           Skill Starter Pack points your agent to real skill paths, category bundles, provider packs,
-          and MCP examples. The agent still asks what you need when the README is used as the starting
-          point.
+          and focused shortlists. When the README is used as the starting point, the agent should ask
+          what you are setting up before installing anything.
         </p>
       </div>
       <div className="about-points">

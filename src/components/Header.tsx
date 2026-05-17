@@ -1,6 +1,7 @@
 import { Github, Grid2X2, Menu, X } from "lucide-react";
 import { useState } from "react";
-import { navItems, repoUrl } from "../data";
+import { commands, navItems, repoUrl } from "../data";
+import { CopyButton } from "./CopyButton";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -33,10 +34,18 @@ export function Header() {
         ))}
       </nav>
 
-      <a className="github-button" href={repoUrl} target="_blank" rel="noreferrer">
-        <Github aria-hidden="true" />
-        <span>Star on GitHub</span>
-      </a>
+      <div className="nav-actions">
+        <CopyButton
+          className="nav-copy-button"
+          value={commands[0].command}
+          label="Quick Start"
+          successLabel="Copied"
+        />
+        <a className="github-button" href={repoUrl} target="_blank" rel="noreferrer">
+          <Github aria-hidden="true" />
+          <span>Star on GitHub</span>
+        </a>
+      </div>
     </header>
   );
 }

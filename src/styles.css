@@ -120,6 +120,12 @@ a:focus-visible {
   color: var(--ink);
 }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .github-button,
 .btn-primary,
 .repo-link {
@@ -141,6 +147,12 @@ a:focus-visible {
 .github-button {
   min-height: 38px;
   padding: 0 18px;
+}
+
+.nav-copy-button {
+  min-height: 38px;
+  border-color: var(--ink);
+  background: transparent;
 }
 
 .github-button:hover,
@@ -264,6 +276,28 @@ a:focus-visible {
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 34px;
+}
+
+.hero-copy-command {
+  position: relative;
+  cursor: pointer;
+  font: inherit;
+}
+
+.copy-tooltip {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 10px);
+  width: max-content;
+  max-width: 280px;
+  padding: 9px 11px;
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  background: var(--lime);
+  color: var(--ink);
+  box-shadow: 6px 6px 0 #d9d8cf;
+  font-size: 11px;
+  line-height: 1.4;
 }
 
 .btn-primary,
@@ -532,7 +566,7 @@ a:focus-visible {
 .paths-section,
 .details-section,
 .surface-grid,
-.mid-grid,
+.ecosystem-section,
 .about-band,
 .bottom-cta {
   max-width: 1280px;
@@ -622,7 +656,6 @@ a:focus-visible {
 .icon-chip,
 .scenario-card span,
 .command-icon,
-.mcp-card > span,
 .provider-card > span {
   display: grid;
   width: 36px;
@@ -637,7 +670,6 @@ a:focus-visible {
 .icon-chip svg,
 .scenario-card svg,
 .command-icon svg,
-.mcp-card svg,
 .provider-card svg {
   width: 16px;
   height: 16px;
@@ -646,7 +678,6 @@ a:focus-visible {
 
 .path-card strong,
 .scenario-card strong,
-.mcp-card strong,
 .provider-card strong {
   color: var(--ink);
   font-family: "Syne", sans-serif;
@@ -656,7 +687,6 @@ a:focus-visible {
 
 .path-card p,
 .scenario-card p,
-.mcp-card p,
 .provider-card p {
   margin: 0;
   color: var(--muted);
@@ -668,8 +698,7 @@ a:focus-visible {
 .card-action,
 .quick-more,
 .provider-card em,
-.panel-heading a,
-.mcp-card em {
+.panel-heading a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -687,8 +716,7 @@ a:focus-visible {
 .scenario-card:hover .card-action,
 .provider-card:hover em,
 .panel-heading a:hover,
-.quick-more:hover,
-.mcp-card:hover em {
+.quick-more:hover {
   gap: 10px;
   color: var(--ink);
 }
@@ -710,15 +738,16 @@ a:focus-visible {
 }
 
 .surface-grid,
-.mid-grid {
+.ecosystem-section {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(340px, 0.75fr);
   gap: 24px;
   margin-bottom: 24px;
+  align-items: stretch;
 }
 
-.mid-grid {
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+.ecosystem-section {
+  grid-template-columns: 1fr;
 }
 
 .panel,
@@ -799,7 +828,7 @@ a:focus-visible {
 }
 
 .quick-panel {
-  align-self: start;
+  align-self: stretch;
   background: var(--ink);
   color: var(--bg);
 }
@@ -934,48 +963,40 @@ a:focus-visible {
   font-size: 18px;
 }
 
-.ecosystem-strip > div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.environment-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.ecosystem-strip span {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 7px 10px;
+.environment-card {
+  display: grid;
+  min-height: 142px;
+  aspect-ratio: 1 / 1;
+  place-items: center;
+  align-content: center;
+  gap: 12px;
   border: 1px solid #333;
-  border-radius: 999px;
+  border-radius: 8px;
+  background: #171717;
   color: #ddd;
-  font-size: 11px;
+  text-align: center;
 }
 
-.ecosystem-strip svg {
-  width: 14px;
-  height: 14px;
+.environment-card svg {
+  width: 26px;
+  height: 26px;
   color: var(--lime);
 }
 
-.mcp-list,
+.environment-card strong {
+  font-family: "Syne", sans-serif;
+  font-size: 15px;
+}
+
 .provider-grid {
   display: grid;
   gap: 10px;
-}
-
-.mcp-card {
-  display: grid;
-  grid-template-columns: 36px minmax(0, 1fr) auto;
-  gap: 12px;
-  align-items: center;
-  padding: 14px;
-  border: 1.5px solid var(--border);
-  border-radius: 8px;
-  background: var(--card);
-}
-
-.providers-panel {
-  grid-column: 1 / -1;
 }
 
 .provider-grid {
@@ -1082,6 +1103,56 @@ a:focus-visible {
   color: var(--lime);
 }
 
+.site-footer {
+  display: flex;
+  max-width: 1280px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0 auto;
+  padding: 32px 48px;
+  border-top: 1.5px solid var(--border);
+}
+
+.site-footer > div {
+  display: grid;
+  gap: 4px;
+}
+
+.site-footer strong {
+  font-family: "Syne", sans-serif;
+  font-size: 14px;
+}
+
+.site-footer span,
+.site-footer a {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+.site-footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.site-footer a:hover {
+  color: var(--ink);
+}
+
+.site-footer svg {
+  width: 14px;
+  height: 14px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1136,14 +1207,15 @@ a:focus-visible {
 
   .hero-inner,
   .surface-grid,
-  .mid-grid,
+  .ecosystem-section,
   .about-band,
   .bottom-cta {
     grid-template-columns: 1fr;
   }
 
   .need-grid,
-  .provider-grid {
+  .provider-grid,
+  .environment-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1183,8 +1255,14 @@ a:focus-visible {
     padding: 0;
   }
 
-  .github-button span {
+  .github-button span,
+  .nav-copy-button span {
     display: none;
+  }
+
+  .nav-copy-button {
+    width: 40px;
+    padding: 0;
   }
 
   .nav-links {
@@ -1196,13 +1274,24 @@ a:focus-visible {
     padding-bottom: 56px;
   }
 
+  .hero-inner,
+  .paths-section,
+  .details-section,
+  .site-footer {
+    width: min(100% - 48px, 294px);
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
   .hero-inner {
     grid-template-columns: 1fr;
     gap: 40px;
   }
 
   .hero-copy h1 {
-    font-size: clamp(34px, 9.1vw, 38px);
+    font-size: clamp(30px, 8vw, 34px);
     line-height: 1.04;
   }
 
@@ -1271,6 +1360,7 @@ a:focus-visible {
   .need-grid,
   .scenario-grid,
   .provider-grid,
+  .environment-grid,
   .about-points {
     grid-template-columns: 1fr;
   }
@@ -1301,13 +1391,11 @@ a:focus-visible {
   }
 
   .command-row,
-  .mcp-card,
   .cta-command {
     grid-template-columns: 1fr;
   }
 
-  .command-icon,
-  .mcp-card > span {
+  .command-icon {
     display: none;
   }
 
@@ -1323,5 +1411,10 @@ a:focus-visible {
 
   .stats-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .site-footer {
+    display: grid;
+    padding: 24px;
   }
 }

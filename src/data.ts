@@ -6,12 +6,9 @@ import {
   Brush,
   Bug,
   CheckCircle2,
-  Cloud,
-  Code2,
   FileText,
   FlaskConical,
   Gem,
-  Github,
   GitPullRequest,
   Globe2,
   Layers3,
@@ -19,9 +16,9 @@ import {
   MonitorSmartphone,
   PackageCheck,
   Rocket,
-  Settings2,
   ShieldCheck,
   Sparkles,
+  Star,
   TerminalSquare,
   TestTube2,
   WandSparkles,
@@ -31,6 +28,8 @@ import type { LucideIcon } from "lucide-react";
 
 export const repoUrl = "https://github.com/iice257/Skills-quickstarter";
 export const commandRepoBase = "https://github.com/iice257/Skills";
+export const githubProfileUrl = "https://github.com/iice257";
+export const xProfileUrl = "https://x.com/iice257";
 
 export type NavItem = {
   label: string;
@@ -39,9 +38,8 @@ export type NavItem = {
 
 export const navItems: NavItem[] = [
   { label: "Home", href: "#home" },
+  { label: "Categories", href: "#categories" },
   { label: "Scenarios", href: "#scenarios" },
-  { label: "Skills", href: "#skills" },
-  { label: "MCPs", href: "#mcps" },
   { label: "Providers", href: "#providers" },
   { label: "About", href: "#about" }
 ];
@@ -57,56 +55,56 @@ export const commands: CommandRow[] = [
   {
     label: "Guided setup",
     description: "Starts from the README so the agent asks what you need.",
-    command: `Skill Installer install the skills listed at ${commandRepoBase}/readme.md`,
+    command: `$skill-starter install ${commandRepoBase}/readme.md`,
     icon: Sparkles
   },
   {
     label: "Lightweight quickstart",
     description: "Small starter setup without installing everything.",
-    command: `Skill Installer install the skills listed at ${commandRepoBase}/tree/main/categories/lightweight-quickstart`,
+    command: `$skill-starter install ${commandRepoBase}/tree/main/categories/lightweight-quickstart`,
     icon: PackageCheck
   },
   {
     label: "Web development setup",
     description: "Frontend, design, browser testing, CI, and deployment.",
-    command: `Skill Installer install the skills listed at ${commandRepoBase}/tree/main/categories/web-development-setup`,
+    command: `$skill-starter install ${commandRepoBase}/tree/main/categories/web-development-setup`,
     icon: Globe2
   },
   {
     label: "Full startup",
     description: "Installs the full skill catalog.",
-    command: `Skill Installer install the skills listed at ${commandRepoBase}/tree/main/categories/full-startup`,
+    command: `$skill-starter install ${commandRepoBase}/tree/main/categories/full-startup`,
     icon: Blocks
   },
   {
     label: "Favourites",
     description: "Installs the current capped shortlist.",
-    command: `Skill Installer install the skills listed at ${commandRepoBase}/tree/main/favourites`,
+    command: `$skill-starter install ${commandRepoBase}/tree/main/favourites`,
     icon: CheckCircle2
   }
 ];
 
 export const needCards = [
   {
+    title: "Categories",
+    text: "Install paths grouped by the kind of work you do.",
+    href: `${repoUrl}/tree/main/categories`,
+    action: "Browse categories",
+    icon: Layers3
+  },
+  {
     title: "Scenarios",
     text: "Use-case bundles for different setups.",
     href: "#scenarios",
     action: "View bundles",
-    icon: Layers3
+    icon: Workflow
   },
   {
-    title: "Skills",
-    text: "Installable skill files for your agent.",
-    href: `${repoUrl}/tree/main/all`,
-    action: "Browse skills",
-    icon: PackageCheck
-  },
-  {
-    title: "MCPs",
-    text: "Config references, not Codex skills.",
-    href: "#mcps",
-    action: "View configs",
-    icon: Settings2
+    title: "Favourites",
+    text: "The capped shortlist for a fast high-value setup.",
+    href: `${repoUrl}/tree/main/favourites`,
+    action: "Install shortlist",
+    icon: Star
   },
   {
     title: "Providers",
@@ -206,21 +204,6 @@ export const scenarios: Scenario[] = [
   }
 ];
 
-export const mcpConfigs = [
-  {
-    name: "xcodebuildmcp",
-    description: "iOS simulator build, run, test, logging, UI automation, and debugging workflows.",
-    href: `${repoUrl}/blob/main/mcps/xcodebuildmcp.json`,
-    icon: Code2
-  },
-  {
-    name: "cloudflare-api",
-    description: "Cloudflare API access through the official Cloudflare MCP server.",
-    href: `${repoUrl}/blob/main/mcps/cloudflare-api.json`,
-    icon: Cloud
-  }
-];
-
 export const providers = [
   {
     name: "OpenAI",
@@ -265,6 +248,5 @@ export const ecosystem = [
   { label: "Codex", icon: Bot },
   { label: "Claude Code", icon: Box },
   { label: "Gemini", icon: Gem },
-  { label: "Cursor", icon: TerminalSquare },
-  { label: "GitHub", icon: Github }
+  { label: "Cursor", icon: TerminalSquare }
 ];

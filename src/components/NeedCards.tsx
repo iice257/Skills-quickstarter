@@ -3,7 +3,7 @@ import { needCards } from "../data";
 
 export function NeedCards() {
   return (
-    <section id="skills" className="paths-section">
+    <section id="categories" className="paths-section">
       <div className="section-header">
         <div>
           <span className="section-eyebrow">Choose a path</span>
