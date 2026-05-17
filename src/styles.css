@@ -80,47 +80,27 @@ a:focus-visible {
 .brand {
   display: inline-flex;
   align-items: center;
+  gap: 9px;
   font-family: "Syne", sans-serif;
   font-size: 15px;
   font-weight: 800;
   letter-spacing: 0;
 }
 
-.brand-lockup {
+.brand-logo-image {
   display: block;
-  width: 206px;
-  height: 36px;
-  overflow: visible;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
 }
 
-.brand-lockup text {
-  fill: var(--ink);
+.brand-wordmark {
+  color: var(--ink);
   font-family: "Syne", sans-serif;
   font-size: 16px;
   font-weight: 800;
-  letter-spacing: 0;
-}
-
-.brand-icon-code .brand-shell {
-  fill: transparent;
-  stroke: var(--ink);
-  stroke-width: 3;
-}
-
-.brand-icon-code rect:not(.brand-shell) {
-  fill: #050505;
-}
-
-.brand-icon-code .terminal-tile {
-  fill: var(--lime);
-}
-
-.brand-icon-code path {
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 2.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .brand-mark {
@@ -1685,12 +1665,12 @@ a:focus-visible {
     gap: 18px;
   }
 
-  .brand-lockup {
-    width: 236px;
-    height: 40px;
+  .brand-logo-image {
+    width: 38px;
+    height: 38px;
   }
 
-  .brand-lockup text {
+  .brand-wordmark {
     font-size: 17px;
   }
 
@@ -1887,17 +1867,17 @@ a:focus-visible {
     padding: 0 12px;
   }
 
-  .brand-lockup {
-    width: clamp(166px, 48vw, 194px);
-    height: 34px;
+  .brand {
+    gap: 8px;
   }
 
-  .brand-lockup text {
-    font-size: 16px;
+  .brand-logo-image {
+    width: 36px;
+    height: 36px;
   }
 
-  .brand-icon-code .brand-shell {
-    stroke-width: 3.2px;
+  .brand-wordmark {
+    font-size: clamp(13px, 3.7vw, 16px);
   }
 
   .menu-toggle {
@@ -2196,8 +2176,15 @@ a:focus-visible {
 }
 
 @media (max-width: 380px) {
-  .brand-lockup {
-    width: 154px;
+  .brand-logo-image {
+    width: 33px;
+    height: 33px;
+  }
+
+  .brand-wordmark {
+    max-width: 112px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .nav-actions {
