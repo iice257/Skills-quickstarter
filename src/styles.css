@@ -1115,10 +1115,8 @@ a:focus-visible {
   color: var(--lime);
 }
 
-.providers-panel .provider-card:not(.expanded) .mini-copy {
-  border-color: #333;
-  background: #202020;
-  color: var(--bg);
+.providers-panel .provider-card .mini-copy {
+  display: none;
 }
 
 .provider-card:hover {
