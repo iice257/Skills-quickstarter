@@ -1296,15 +1296,14 @@ a:focus-visible {
   padding: 0 14px;
   border: 1.5px solid var(--ink);
   border-radius: 4px;
-  background: var(--ink);
-  color: var(--lime);
+  background: var(--lime);
+  color: var(--ink);
   box-shadow: 8px 8px 0 #d9d8cf;
   cursor: pointer;
   font: inherit;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.3px;
-  animation: fabFloat 2.6s ease-in-out infinite;
   transition:
     background 150ms ease,
     color 150ms ease,
@@ -1339,8 +1338,8 @@ a:focus-visible {
   height: 20px;
   place-items: center;
   border-radius: 999px;
-  background: var(--lime);
-  color: var(--ink);
+  background: var(--ink);
+  color: var(--lime);
   font-size: 10px;
   font-style: normal;
 }
@@ -1351,18 +1350,6 @@ a:focus-visible {
   color: #85837b;
   cursor: not-allowed;
   opacity: 0.85;
-  animation-play-state: paused;
-}
-
-@keyframes fabFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-5px);
-  }
 }
 
 .expanded-command code {
