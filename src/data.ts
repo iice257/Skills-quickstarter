@@ -372,10 +372,3 @@ export const stats = [
   { value: "4", label: "Provider packs" },
   { value: "1command", label: "Setup time" }
 ];
-
-export const ecosystem = [
-  { label: "Codex", icon: Bot },
-  { label: "Claude Code", icon: Box },
-  { label: "Gemini", icon: Gem },
-  { label: "Cursor", icon: TerminalSquare }
-];

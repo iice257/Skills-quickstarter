@@ -817,7 +817,6 @@ a:focus-visible {
 
 .panel,
 .quick-panel,
-.proof-panel,
 .about-band,
 .bottom-cta {
   border: 1.5px solid var(--border);
@@ -826,8 +825,7 @@ a:focus-visible {
 }
 
 .panel,
-.quick-panel,
-.proof-panel {
+.quick-panel {
   padding: 28px;
 }
 
@@ -989,78 +987,6 @@ a:focus-visible {
 
 .quick-more {
   color: var(--lime);
-}
-
-.proof-panel {
-  background: var(--ink);
-  color: var(--bg);
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-  padding-bottom: 22px;
-  border-bottom: 1px solid #333;
-}
-
-.stats-grid div {
-  display: grid;
-  gap: 4px;
-  text-align: center;
-}
-
-.stats-grid strong {
-  color: var(--lime);
-  font-family: "Syne", sans-serif;
-  font-size: 26px;
-}
-
-.stats-grid span {
-  color: #777;
-  font-size: 10px;
-  text-transform: uppercase;
-}
-
-.ecosystem-strip {
-  margin-top: 22px;
-}
-
-.ecosystem-strip h3 {
-  margin: 0 0 14px;
-  font-family: "Syne", sans-serif;
-  font-size: 18px;
-}
-
-.environment-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.environment-card {
-  display: grid;
-  min-height: 142px;
-  aspect-ratio: 1 / 1;
-  place-items: center;
-  align-content: center;
-  gap: 12px;
-  border: 1px solid #333;
-  border-radius: 8px;
-  background: #171717;
-  color: #ddd;
-  text-align: center;
-}
-
-.environment-card svg {
-  width: 26px;
-  height: 26px;
-  color: var(--lime);
-}
-
-.environment-card strong {
-  font-family: "Syne", sans-serif;
-  font-size: 15px;
 }
 
 .provider-grid {
@@ -1441,8 +1367,7 @@ a:focus-visible {
 
   .need-grid,
   .provider-grid,
-  .favorites-grid,
-  .environment-grid {
+  .favorites-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1594,7 +1519,6 @@ a:focus-visible {
   .scenario-grid,
   .provider-grid,
   .favorites-grid,
-  .environment-grid,
   .about-points {
     grid-template-columns: 1fr;
   }
@@ -1614,7 +1538,6 @@ a:focus-visible {
 
   .panel,
   .quick-panel,
-  .proof-panel,
   .about-band,
   .favorites-section,
   .bottom-cta {
@@ -1642,10 +1565,6 @@ a:focus-visible {
 
   .copy-button {
     width: 100%;
-  }
-
-  .stats-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .expanded-detail {

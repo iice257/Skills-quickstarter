@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ecosystem, providers, stats } from "../data";
+import { providers } from "../data";
 import { ExpandableInstallCard } from "./ExpandableInstallCard";
 
 export function EcosystemProviders() {
@@ -7,37 +7,11 @@ export function EcosystemProviders() {
 
   return (
     <section className="ecosystem-section">
-      <div className="proof-panel">
-        <div className="stats-grid" aria-label="Repository stats">
-          {stats.map((stat) => (
-            <div key={stat.label}>
-              <strong>{stat.value}</strong>
-              <span>{stat.label}</span>
-            </div>
-          ))}
-        </div>
-
-        <div className="ecosystem-strip">
-          <h3>Works with leading agentic environments</h3>
-          <div className="environment-grid">
-            {ecosystem.map((item) => {
-              const Icon = item.icon;
-              return (
-                <article key={item.label} className="environment-card">
-                  <Icon aria-hidden="true" />
-                  <strong>{item.label}</strong>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
       <section id="providers" className="panel providers-panel">
         <div className="panel-heading compact">
           <div>
             <span>Providers</span>
-            <h2>Provider and ecosystem packs</h2>
+            <h2>Provider packs</h2>
             <p>Provider packs stay separate from favourites and originals.</p>
           </div>
         </div>
