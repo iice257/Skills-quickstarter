@@ -1,9 +1,9 @@
 import { ArrowRight } from "lucide-react";
-import { ecosystem, mcpConfigs, providers, stats } from "../data";
+import { ecosystem, providers, stats } from "../data";
 
-export function McpProviders() {
+export function EcosystemProviders() {
   return (
-    <section className="mid-grid">
+    <section className="ecosystem-section">
       <div className="proof-panel">
         <div className="stats-grid" aria-label="Repository stats">
           {stats.map((stat) => (
@@ -16,46 +16,19 @@ export function McpProviders() {
 
         <div className="ecosystem-strip">
           <h3>Works with leading agentic environments</h3>
-          <div>
+          <div className="environment-grid">
             {ecosystem.map((item) => {
               const Icon = item.icon;
               return (
-                <span key={item.label}>
+                <article key={item.label} className="environment-card">
                   <Icon aria-hidden="true" />
-                  {item.label}
-                </span>
+                  <strong>{item.label}</strong>
+                </article>
               );
             })}
           </div>
         </div>
       </div>
-
-      <section id="mcps" className="panel mcp-panel">
-        <div className="panel-heading compact">
-          <div>
-            <span>MCPs</span>
-            <h2>MCP config examples</h2>
-            <p>Configuration references for Model Context Protocol.</p>
-          </div>
-        </div>
-        <div className="mcp-list">
-          {mcpConfigs.map((mcp) => {
-            const Icon = mcp.icon;
-            return (
-              <a className="mcp-card" href={mcp.href} target="_blank" rel="noreferrer" key={mcp.name}>
-                <span>
-                  <Icon aria-hidden="true" />
-                </span>
-                <div>
-                  <strong>{mcp.name}</strong>
-                  <p>{mcp.description}</p>
-                </div>
-                <em>View config</em>
-              </a>
-            );
-          })}
-        </div>
-      </section>
 
       <section id="providers" className="panel providers-panel">
         <div className="panel-heading compact">

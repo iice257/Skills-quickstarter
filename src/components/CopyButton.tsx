@@ -4,10 +4,16 @@ import { useState } from "react";
 type CopyButtonProps = {
   value: string;
   label?: string;
+  successLabel?: string;
   className?: string;
 };
 
-export function CopyButton({ value, label = "Copy", className = "" }: CopyButtonProps) {
+export function CopyButton({
+  value,
+  label = "Copy",
+  successLabel = "Copied",
+  className = ""
+}: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
 
   function fallbackCopy() {
@@ -45,7 +51,7 @@ export function CopyButton({ value, label = "Copy", className = "" }: CopyButton
       aria-live="polite"
     >
       {copied ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
-      <span>{copied ? "Copied" : label}</span>
+      <span>{copied ? successLabel : label}</span>
     </button>
   );
 }

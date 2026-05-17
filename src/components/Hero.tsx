@@ -1,7 +1,38 @@
-import { ArrowRight, Check, Play } from "lucide-react";
-import { trustItems } from "../data";
+import { ArrowRight, Check, Copy, Play } from "lucide-react";
+import { useState } from "react";
+import { commands, trustItems } from "../data";
 
 export function Hero() {
+  const [copied, setCopied] = useState(false);
+  const mainCommand = commands[0].command;
+
+  function fallbackCopy() {
+    const textArea = document.createElement("textarea");
+    textArea.value = mainCommand;
+    textArea.setAttribute("readonly", "");
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textArea);
+  }
+
+  async function copyQuickStart() {
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(mainCommand);
+      } else {
+        fallbackCopy();
+      }
+    } catch {
+      fallbackCopy();
+    }
+
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 2600);
+  }
+
   return (
     <section id="home" className="hero-shell">
       <div className="hero-inner">
@@ -17,7 +48,7 @@ export function Hero() {
             <span>All in one place.</span>
           </h1>
           <p>
-            Curated skills, scenario bundles, provider packs, and MCP configs for Codex and other
+            Curated skills, scenario bundles, provider packs, and category paths for Codex and other
             agentic IDEs. Install only what you need.
           </p>
 
@@ -26,8 +57,20 @@ export function Hero() {
               Explore Scenarios
               <ArrowRight aria-hidden="true" />
             </a>
-            <a className="btn-secondary" href="#quick-start">
+            <button
+              className="btn-secondary hero-copy-command"
+              type="button"
+              onClick={copyQuickStart}
+              aria-live="polite"
+            >
               Quick Start
+              <Copy aria-hidden="true" />
+              {copied ? (
+                <span className="copy-tooltip">Command copied. Paste to agent to get started.</span>
+              ) : null}
+            </button>
+            <a className="btn-secondary" href="#categories">
+              Categories
               <Play aria-hidden="true" />
             </a>
           </div>
@@ -54,28 +97,25 @@ export function Hero() {
             <span className="frame-title">terminal - skill-starter-pack</span>
             <div className="terminal-body">
               <p>
-                <span className="t-prompt">$</span>
-                <span className="t-cmd"> Skill Installer install the skills listed at README.md</span>
+                <span className="t-cmd">$skill-starter install README.md</span>
               </p>
               <div className="t-output">
                 <span className="t-info">? Choose a setup path</span>
                 <span className="t-success">&gt; Scenarios / use-case bundles</span>
-                <span>  Skills / installable files</span>
-                <span>  MCPs / config references</span>
+                <span>  Categories / install paths</span>
+                <span>  Favourites / capped shortlist</span>
                 <span>  Providers / OpenAI, Claude, Gemini, Cursor</span>
               </div>
               <p>
-                <span className="t-prompt">$</span>
-                <span className="t-cmd"> install categories/web-development-setup</span>
+                <span className="t-cmd">$skill-starter install categories/web-development-setup</span>
               </p>
               <div className="t-output">
-                <span className="t-success">✓ Fetched scenario bundle</span>
-                <span className="t-success">✓ Installed matching skill paths</span>
-                <span className="t-success">✓ Ready after Codex restart</span>
+                <span className="t-success">ok Fetched scenario bundle</span>
+                <span className="t-success">ok Installed matching skill paths</span>
+                <span className="t-success">ok Ready after Codex restart</span>
               </div>
               <p>
-                <span className="t-prompt">$</span>
-                <span className="t-comment"> # Works with your provider of choice</span>
+                <span className="t-comment"># Works with your provider of choice</span>
               </p>
               <div className="provider-chips">
                 {["OpenAI", "Claude", "Gemini", "Cursor"].map((provider) => (
@@ -86,7 +126,7 @@ export function Hero() {
                 ))}
               </div>
               <p>
-                <span className="t-prompt">$</span>
+                <span className="t-cmd">$skill-starter </span>
                 <span className="t-cursor" aria-hidden="true" />
               </p>
             </div>
@@ -96,3 +136,4 @@ export function Hero() {
     </section>
   );
 }
+

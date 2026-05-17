@@ -1,8 +1,9 @@
 import { About } from "./components/About";
 import { BottomCta } from "./components/BottomCta";
+import { EcosystemProviders } from "./components/EcosystemProviders";
+import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
-import { McpProviders } from "./components/McpProviders";
 import { NeedCards } from "./components/NeedCards";
 import { QuickStart } from "./components/QuickStart";
 import { ScenarioGrid } from "./components/ScenarioGrid";
@@ -21,11 +22,12 @@ function App() {
             <ScenarioGrid />
             <QuickStart />
           </div>
-          <McpProviders />
+          <EcosystemProviders />
           <About />
           <BottomCta />
         </section>
       </main>
+      <Footer />
     </>
   );
 }
