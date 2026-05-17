@@ -1,5 +1,6 @@
 import { Check, Copy } from "lucide-react";
 import { useState } from "react";
+import type { MouseEvent } from "react";
 
 type CopyButtonProps = {
   value: string;
@@ -28,7 +29,10 @@ export function CopyButton({
     document.body.removeChild(textArea);
   }
 
-  async function handleCopy() {
+  async function handleCopy(event: MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    event.stopPropagation();
+
     try {
       if (navigator.clipboard?.writeText) {
         await navigator.clipboard.writeText(value);

@@ -31,6 +31,8 @@ export const commandRepoBase = "https://github.com/iice257/Skills";
 export const githubProfileUrl = "https://github.com/iice257";
 export const xProfileUrl = "https://x.com/iice257";
 
+const installCommand = (path: string) => `$skill-starter install ${commandRepoBase}/${path}`;
+
 export type NavItem = {
   label: string;
   href: string;
@@ -90,35 +92,50 @@ export const needCards = [
     text: "Install paths grouped by the kind of work you do.",
     href: `${repoUrl}/tree/main/categories`,
     action: "Browse categories",
-    icon: Layers3
+    icon: Layers3,
+    command: installCommand("tree/main/categories"),
+    summary: "Installs from the category index so your agent can pick focused work bundles.",
+    includes: ["Scenario folders", "Provider packs", "Focused setup paths"]
   },
   {
     title: "Scenarios",
     text: "Use-case bundles for different setups.",
     href: "#scenarios",
     action: "View bundles",
-    icon: Workflow
+    icon: Workflow,
+    command: installCommand("tree/main/categories/web-development-setup"),
+    summary: "Starts with practical setup bundles grouped by workflow.",
+    includes: ["Web development setup", "Debugging", "Deployment"]
   },
   {
     title: "Favourites",
     text: "The capped shortlist for a fast high-value setup.",
     href: `${repoUrl}/tree/main/favourites`,
     action: "Install shortlist",
-    icon: Star
+    icon: Star,
+    command: installCommand("tree/main/favourites"),
+    summary: "Installs the current high-value shortlist for quick agent setup.",
+    includes: ["Handoff", "Publishing", "Research", "Skill updates"]
   },
   {
     title: "Providers",
     text: "OpenAI, Claude, Gemini, and Cursor packs.",
     href: "#providers",
     action: "Explore packs",
-    icon: Workflow
+    icon: Workflow,
+    command: installCommand("tree/main/categories/openai-official"),
+    summary: "Installs provider-specific packs separately from originals and favourites.",
+    includes: ["OpenAI", "Claude Code", "Gemini", "Cursor"]
   },
   {
     title: "Originals",
     text: "My originals and custom additions.",
     href: `${repoUrl}/tree/main/originals`,
     action: "See originals",
-    icon: WandSparkles
+    icon: WandSparkles,
+    command: installCommand("tree/main/originals"),
+    summary: "Installs my originals and custom additions from the dedicated folder.",
+    includes: ["Idea launcher", "Handoff", "Publishing", "Workflow helpers"]
   }
 ];
 
@@ -127,6 +144,9 @@ export type Scenario = {
   description: string;
   href: string;
   icon: LucideIcon;
+  command: string;
+  summary: string;
+  includes: string[];
 };
 
 export const scenarios: Scenario[] = [
@@ -134,73 +154,109 @@ export const scenarios: Scenario[] = [
     name: "Web development setup",
     description: "Frontend, design, testing, CI, and deploy workflows.",
     href: `${repoUrl}/tree/main/categories/web-development-setup`,
-    icon: Globe2
+    icon: Globe2,
+    command: installCommand("tree/main/categories/web-development-setup"),
+    summary: "Installs the core frontend workflow for building, testing, and shipping web apps.",
+    includes: ["frontend-skill", "playwright", "gh-fix-ci", "vercel-deploy"]
   },
   {
     name: "Design UI",
     description: "Premium interface design and redesign work.",
     href: `${repoUrl}/tree/main/categories/design-ui`,
-    icon: Brush
+    icon: Brush,
+    command: installCommand("tree/main/categories/design-ui"),
+    summary: "Adds UI taste, redesign, and frontend visual direction skills.",
+    includes: ["frontend-skill", "design-taste-frontend", "redesign-existing-projects"]
   },
   {
     name: "Browser testing",
     description: "Browser automation, screenshots, and verification.",
     href: `${repoUrl}/tree/main/categories/browser-testing`,
-    icon: TestTube2
+    icon: TestTube2,
+    command: installCommand("tree/main/categories/browser-testing"),
+    summary: "Adds browser automation and visual verification support for agent workflows.",
+    includes: ["playwright", "playwright-interactive", "screenshot"]
   },
   {
     name: "Debugging",
     description: "Browser, screenshot, PR checks, and review fixes.",
     href: `${repoUrl}/tree/main/categories/debugging`,
-    icon: Bug
+    icon: Bug,
+    command: installCommand("tree/main/categories/debugging"),
+    summary: "Installs skills for investigating failures, checks, screenshots, and PR comments.",
+    includes: ["gh-fix-ci", "gh-address-comments", "playwright"]
   },
   {
     name: "GitHub CI",
     description: "GitHub Actions and PR review workflow.",
     href: `${repoUrl}/tree/main/categories/github-ci`,
-    icon: GitPullRequest
+    icon: GitPullRequest,
+    command: installCommand("tree/main/categories/github-ci"),
+    summary: "Adds GitHub Actions and PR review workflows for failing checks and review comments.",
+    includes: ["gh-fix-ci", "gh-address-comments", "github"]
   },
   {
     name: "Deployment",
     description: "Vercel, Netlify, and deploy-readiness workflows.",
     href: `${repoUrl}/tree/main/categories/deployment`,
-    icon: Rocket
+    icon: Rocket,
+    command: installCommand("tree/main/categories/deployment"),
+    summary: "Installs deploy-focused skills for getting apps online and checking readiness.",
+    includes: ["vercel-deploy", "netlify-deploy", "verification"]
   },
   {
     name: "Cybersec",
     description: "Security review, ownership mapping, and CI checks.",
     href: `${repoUrl}/tree/main/categories/cybersec`,
-    icon: ShieldCheck
+    icon: ShieldCheck,
+    command: installCommand("tree/main/categories/cybersec"),
+    summary: "Adds security review and ownership-mapping workflows for codebases.",
+    includes: ["security-best-practices", "security-ownership-map", "gh-fix-ci"]
   },
   {
     name: "Content media",
     description: "Images, speech, transcription, screenshots, publishing.",
     href: `${repoUrl}/tree/main/categories/content-media`,
-    icon: FileText
+    icon: FileText,
+    command: installCommand("tree/main/categories/content-media"),
+    summary: "Installs media and publishing helpers for screenshots, speech, image, and post work.",
+    includes: ["imagegen", "speech", "transcribe", "x-publisher"]
   },
   {
     name: "Documents office",
     description: "Documents, PDFs, and transcription-heavy work.",
     href: `${repoUrl}/tree/main/categories/documents-office`,
-    icon: Braces
+    icon: Braces,
+    command: installCommand("tree/main/categories/documents-office"),
+    summary: "Adds document, PDF, and transcription workflows for office-heavy tasks.",
+    includes: ["doc", "pdf", "transcribe"]
   },
   {
     name: "AI / API",
     description: "Gemini, image generation, speech, and transcription APIs.",
     href: `${repoUrl}/tree/main/categories/ai-api`,
-    icon: FlaskConical
+    icon: FlaskConical,
+    command: installCommand("tree/main/categories/ai-api"),
+    summary: "Installs API-oriented skills for AI, image, speech, and multimodal work.",
+    includes: ["gemini-api-dev", "imagegen", "speech", "transcribe"]
   },
   {
     name: "Mobile desktop",
     description: "WinUI, iOS-adjacent references, and app workflows.",
     href: `${repoUrl}/tree/main/categories/mobile-desktop`,
-    icon: MonitorSmartphone
+    icon: MonitorSmartphone,
+    command: installCommand("tree/main/categories/mobile-desktop"),
+    summary: "Adds desktop and mobile app workflow helpers for Windows and app-adjacent work.",
+    includes: ["winui-app", "screenshot", "ios workflow refs"]
   },
   {
     name: "Planning productivity",
     description: "Idea shaping, skill discovery, handoff, and complete output.",
     href: `${repoUrl}/tree/main/categories/planning-productivity`,
-    icon: Lightbulb
+    icon: Lightbulb,
+    command: installCommand("tree/main/categories/planning-productivity"),
+    summary: "Installs planning and productivity workflows for shaping ideas and handing off work.",
+    includes: ["idea-launcher", "find-skills", "imessage-handoff", "full-output-enforcement"]
   }
 ];
 
@@ -209,25 +265,37 @@ export const providers = [
     name: "OpenAI",
     description: "Official OpenAI skills from GitHub and local Codex OpenAI cache entries.",
     href: `${repoUrl}/tree/main/categories/openai-official`,
-    icon: Bot
+    icon: Bot,
+    command: installCommand("tree/main/categories/openai-official"),
+    summary: "Installs the OpenAI provider pack from official and local Codex entries.",
+    includes: ["openai-docs", "imagegen", "Codex OpenAI cache skills"]
   },
   {
     name: "Claude Code",
     description: "Anthropic GitHub skills plus local Claude Code-style skills found on this machine.",
     href: `${repoUrl}/tree/main/categories/claude-code`,
-    icon: Box
+    icon: Box,
+    command: installCommand("tree/main/categories/claude-code"),
+    summary: "Installs Claude Code-style provider skills and Anthropic source entries.",
+    includes: ["Anthropic skills", "Claude Code-style local skills", "provider references"]
   },
   {
     name: "Gemini",
     description: "Gemini CLI GitHub skills plus local Gemini-related skills.",
     href: `${repoUrl}/tree/main/categories/gemini`,
-    icon: Gem
+    icon: Gem,
+    command: installCommand("tree/main/categories/gemini"),
+    summary: "Installs Gemini-related skills for Gemini CLI and API development workflows.",
+    includes: ["gemini-api-dev", "Gemini CLI skills", "local Gemini entries"]
   },
   {
     name: "Cursor",
     description: "Cursor rules and skill locations checked; no installable SKILL.md pack found yet.",
     href: `${repoUrl}/tree/main/categories/cursor`,
-    icon: TerminalSquare
+    icon: TerminalSquare,
+    command: installCommand("tree/main/categories/cursor"),
+    summary: "Opens the Cursor pack area and installs any tracked Cursor-compatible entries.",
+    includes: ["Cursor rules notes", "provider check notes", "future pack path"]
   }
 ];
 

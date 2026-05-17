@@ -1,7 +1,11 @@
 import { ArrowRight } from "lucide-react";
+import { useState } from "react";
 import { scenarios } from "../data";
+import { ExpandableInstallCard } from "./ExpandableInstallCard";
 
 export function ScenarioGrid() {
+  const [expanded, setExpanded] = useState<string | null>(null);
+
   return (
     <section id="scenarios" className="panel scenario-panel">
       <div className="panel-heading">
@@ -17,23 +21,25 @@ export function ScenarioGrid() {
 
       <div className="scenario-grid">
         {scenarios.map((scenario, index) => {
-          const Icon = scenario.icon;
-
           return (
-            <a
+            <ExpandableInstallCard
               key={scenario.name}
-              className="scenario-card"
-              href={scenario.href}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <em>{String(index + 1).padStart(2, "0")}</em>
-              <span>
-                <Icon aria-hidden="true" />
-              </span>
-              <strong>{scenario.name}</strong>
-              <p>{scenario.description}</p>
-            </a>
+              item={{
+                title: scenario.name,
+                description: scenario.description,
+                command: scenario.command,
+                summary: scenario.summary,
+                includes: scenario.includes,
+                icon: scenario.icon,
+                action: "Expand"
+              }}
+              index={index}
+              variant="scenario"
+              expanded={expanded === scenario.name}
+              onToggle={() =>
+                setExpanded((current) => (current === scenario.name ? null : scenario.name))
+              }
+            />
           );
         })}
       </div>
