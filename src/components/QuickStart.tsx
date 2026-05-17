@@ -35,6 +35,11 @@ export function QuickStart() {
         View all quick start options
         <ArrowRight aria-hidden="true" />
       </a>
+
+      <div className="agent-note">
+        <span>For agents</span>
+        <p>Start at the README, ask what setup is needed, then install only the matching paths.</p>
+      </div>
     </section>
   );
 }
