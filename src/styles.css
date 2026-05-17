@@ -943,7 +943,9 @@ a:focus-visible {
 }
 
 .quick-panel {
+  display: flex;
   align-self: stretch;
+  flex-direction: column;
   background: var(--ink);
   color: var(--bg);
 }
@@ -1041,6 +1043,39 @@ a:focus-visible {
 
 .quick-more {
   color: var(--lime);
+}
+
+.agent-note {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid #333;
+}
+
+.agent-note span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: var(--lime);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.agent-note span::before {
+  width: 16px;
+  height: 1.5px;
+  content: "";
+  background: var(--lime);
+}
+
+.agent-note p {
+  max-width: 30ch;
+  margin: 0;
+  color: #d2d2c8;
+  font-size: 11px;
+  line-height: 1.65;
 }
 
 .provider-grid {
@@ -1590,23 +1625,31 @@ a:focus-visible {
 
 @media (max-width: 1060px) {
   .site-header {
-    padding: 0 24px;
+    height: 68px;
+    padding: 0 28px;
+    gap: 18px;
   }
 
   .brand-lockup {
-    width: 178px;
-    height: 30px;
+    width: 222px;
+    height: 37px;
+  }
+
+  .brand-lockup text {
+    font-size: 17px;
   }
 
   .menu-toggle {
     display: grid;
+    width: 44px;
+    height: 44px;
   }
 
   .nav-links {
     position: absolute;
-    top: 60px;
-    right: 18px;
-    left: 18px;
+    top: 68px;
+    right: 28px;
+    left: 28px;
     display: none;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0;
@@ -1630,8 +1673,8 @@ a:focus-visible {
   .hero-shell,
   .paths-section,
   .details-section {
-    padding-right: 24px;
-    padding-left: 24px;
+    padding-right: 32px;
+    padding-left: 32px;
   }
 
   .hero-stage {
@@ -1640,8 +1683,8 @@ a:focus-visible {
 
   .hero-stage .hero-shell {
     display: block;
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 70px;
+    padding-bottom: 58px;
   }
 
   .hero-inner,
@@ -1652,10 +1695,65 @@ a:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .hero-inner {
+    width: min(100%, 860px);
+    gap: 42px;
+  }
+
+  .hero-copy h1 {
+    max-width: 760px;
+    font-size: clamp(52px, 8.8vw, 76px);
+  }
+
+  .hero-copy p {
+    max-width: 620px;
+  }
+
+  .hero-visual {
+    min-height: 360px;
+  }
+
+  .terminal-frame {
+    height: 360px;
+  }
+
+  .stats-bar {
+    padding: 24px 32px;
+  }
+
+  .stat-group {
+    width: min(100%, 760px);
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .paths-section {
+    padding-top: 68px;
+    padding-bottom: 68px;
+  }
+
+  .details-section {
+    padding-bottom: 64px;
+  }
+
+  .section-header {
+    gap: 24px;
+    margin-bottom: 34px;
+  }
+
   .need-grid,
   .provider-grid,
   .favorites-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .path-card {
+    min-height: 226px;
+    padding: 26px 24px 56px;
+  }
+
+  .path-card:nth-child(5) {
+    grid-column: 1 / -1;
   }
 
   .path-card:nth-child(2n) {
@@ -1670,6 +1768,10 @@ a:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .scenario-card {
+    min-height: 190px;
+  }
+
   .scenario-card:nth-child(3n) {
     border-right: 1.5px solid var(--border);
   }
@@ -1677,21 +1779,70 @@ a:focus-visible {
   .scenario-card:nth-child(2n) {
     border-right: none;
   }
+
+  .quick-panel {
+    min-height: auto;
+  }
+
+  .command-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .command-row {
+    grid-template-columns: 32px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .command-row .copy-button {
+    grid-column: 2;
+    width: max-content;
+  }
+
+  .agent-note {
+    max-width: 520px;
+  }
+
+  .expanded-detail {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 0.9fr);
+  }
+
+  .expanded-command {
+    grid-column: 1 / -1;
+  }
+
+  #categories,
+  #scenarios,
+  #providers,
+  #favorites,
+  #about,
+  #quick-start {
+    scroll-margin-top: 92px;
+  }
 }
 
 @media (max-width: 700px) {
   .site-header {
-    gap: 10px;
-    padding: 0 14px;
+    height: 64px;
+    gap: 8px;
+    padding: 0 12px;
   }
 
   .brand-lockup {
-    width: 154px;
-    height: 26px;
+    width: clamp(150px, 45vw, 178px);
+    height: 30px;
   }
 
   .brand-lockup text {
-    font-size: 15px;
+    font-size: 16px;
+  }
+
+  .brand-icon-code rect:first-child {
+    stroke-width: 3.4px;
+  }
+
+  .menu-toggle {
+    width: 40px;
+    height: 40px;
   }
 
   .github-button {
@@ -1710,19 +1861,24 @@ a:focus-visible {
   }
 
   .nav-links {
+    top: 64px;
+    right: 12px;
+    left: 12px;
     grid-template-columns: 1fr 1fr;
   }
 
   .hero-shell {
-    padding-top: 56px;
-    padding-bottom: 56px;
+    padding-top: 44px;
+    padding-right: 0;
+    padding-bottom: 44px;
+    padding-left: 0;
   }
 
   .hero-inner,
   .paths-section,
   .details-section,
   .site-footer {
-    width: min(100% - 48px, 294px);
+    width: min(100% - 32px, 430px);
     margin-right: auto;
     margin-left: auto;
     padding-right: 0;
@@ -1731,12 +1887,13 @@ a:focus-visible {
 
   .hero-inner {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 28px;
   }
 
   .hero-copy h1 {
-    font-size: clamp(30px, 8vw, 34px);
-    line-height: 1.04;
+    font-size: clamp(36px, 10vw, 42px);
+    line-height: 0.96;
+    margin-bottom: 20px;
   }
 
   .hero-copy h1 span {
@@ -1751,10 +1908,13 @@ a:focus-visible {
 
   .hero-copy p {
     max-width: 100%;
+    margin-bottom: 24px;
+    font-size: 13px;
   }
 
   .hero-actions {
     display: grid;
+    gap: 10px;
   }
 
   .btn-primary,
@@ -1764,17 +1924,21 @@ a:focus-visible {
 
   .hero-visual,
   .terminal-frame {
-    min-height: 360px;
+    min-height: 300px;
     height: auto;
   }
 
   .terminal-frame {
-    padding: 22px;
+    padding: 18px;
+    border-radius: 10px;
     box-shadow: 8px 8px 0 #e6e4da;
   }
 
   .terminal-body {
-    font-size: 11px;
+    gap: 8px;
+    margin-top: 40px;
+    font-size: 10px;
+    line-height: 1.55;
   }
 
   .frame-title {
@@ -1782,23 +1946,50 @@ a:focus-visible {
   }
 
   .stats-bar {
-    gap: 18px;
-    padding: 24px;
-    flex-wrap: wrap;
+    display: grid;
+    padding: 22px 16px;
   }
 
   .stat-group {
-    gap: 18px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(100%, 430px);
+    gap: 18px 10px;
+  }
+
+  .stat-divider {
+    display: none;
+  }
+
+  .stat {
+    min-width: 0;
   }
 
   .section-header {
     display: grid;
-    gap: 16px;
-    margin-bottom: 30px;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .section-header h2,
+  .panel-heading h2,
+  .quick-panel h2,
+  .about-band h2,
+  .bottom-cta h2 {
+    font-size: clamp(28px, 9vw, 38px);
   }
 
   .section-header p {
     text-align: left;
+  }
+
+  .paths-section {
+    padding-top: 52px;
+    padding-bottom: 52px;
+  }
+
+  .details-section {
+    padding-bottom: 52px;
   }
 
   .need-grid,
@@ -1807,6 +1998,10 @@ a:focus-visible {
   .favorites-grid,
   .about-points {
     grid-template-columns: 1fr;
+    gap: 10px;
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
   }
 
   .path-card,
@@ -1822,21 +2017,46 @@ a:focus-visible {
     border-bottom: none;
   }
 
+  .path-card,
+  .scenario-card,
+  .provider-card {
+    min-height: 0;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 20px 56px;
+  }
+
+  .path-card:nth-child(5) {
+    grid-column: auto;
+  }
+
   .panel,
   .quick-panel,
   .about-band,
   .favorites-section,
   .bottom-cta {
     padding: 20px;
+    border-radius: 8px;
   }
 
   .panel-heading {
     display: grid;
+    gap: 12px;
   }
 
-  .command-row,
-  .cta-command {
+  .command-list {
     grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .command-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .cta-command {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
   }
 
   .command-icon {
@@ -1853,6 +2073,25 @@ a:focus-visible {
     width: 100%;
   }
 
+  .command-row .copy-button,
+  .cta-command .copy-button {
+    width: auto;
+  }
+
+  .command-row .copy-button {
+    grid-column: auto;
+    justify-self: end;
+  }
+
+  .agent-note {
+    margin-top: 22px;
+    padding-top: 18px;
+  }
+
+  .agent-note p {
+    max-width: none;
+  }
+
   .expanded-detail {
     grid-template-columns: 1fr;
     align-items: stretch;
@@ -1865,5 +2104,34 @@ a:focus-visible {
   .site-footer {
     display: grid;
     padding: 24px;
+  }
+
+  .multi-select-actions {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .multi-select-fab {
+    min-width: min(202px, calc(100vw - 88px));
+  }
+}
+
+@media (max-width: 380px) {
+  .brand-lockup {
+    width: 142px;
+  }
+
+  .nav-actions {
+    gap: 6px;
+  }
+
+  .github-button,
+  .nav-copy-button,
+  .menu-toggle {
+    width: 38px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(32px, 10vw, 36px);
   }
 }
