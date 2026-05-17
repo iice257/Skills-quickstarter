@@ -28,19 +28,8 @@ export function Header({ activeSection, onNavigate }: HeaderProps) {
           navigate("home");
         }}
       >
-        <svg className="brand-lockup" viewBox="0 0 255 44" role="img" aria-labelledby="brand-title">
-          <title id="brand-title">Skill Starter Pack</title>
-          <g className="brand-icon-code">
-            <rect className="brand-shell" x="1.5" y="1.5" width="41" height="41" rx="10" />
-            <rect x="8.8" y="8.8" width="12" height="12" rx="3" />
-            <rect x="23.2" y="8.8" width="12" height="12" rx="3" className="terminal-tile" />
-            <rect x="8.8" y="23.2" width="12" height="12" rx="3" />
-            <rect x="23.2" y="23.2" width="12" height="12" rx="3" />
-            <path d="M26.8 12.5l4.4 3.4-4.4 3.4" />
-            <path d="M31.8 19.4h3.5" />
-          </g>
-          <text x="56" y="28">Skill Starter Pack</text>
-        </svg>
+        <img className="brand-logo-image" src="/skill-starter-icon.png" alt="" aria-hidden="true" />
+        <span className="brand-wordmark">Skill Starter Pack</span>
       </a>
 
       <button
