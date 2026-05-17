@@ -10,17 +10,17 @@ Paste the command that matches what you want into your AI agent.
 
 | Setup | What it is for | Command |
 | --- | --- | --- |
-| Guided setup | Starts from this README so the agent can ask what you need before installing. | `Skill Installer install the skills listed at https://github.com/iice257/Skills/readme.md` |
-| Lightweight quickstart | Small starter setup without installing everything. | `Skill Installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/lightweight-quickstart` |
-| Web development setup | Frontend, design, browser testing, CI, and deployment. | `Skill Installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/web-development-setup` |
-| Full startup | Installs the full skill catalog. | `Skill Installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/full-startup` |
-| Favourites | Installs the current capped favourites shortlist. | `Skill Installer install the skills listed at https://github.com/iice257/Skills/tree/main/favourites` |
-| Reccomended | Installs 15 broad all-round dev workflow skills with category spread. | `Skill Installer install the skills listed at https://github.com/iice257/Skills/tree/main/reccomended` |
-| My originals | Installs my originals/custom skills. | `Skill Installer install the skills listed at https://github.com/iice257/Skills/tree/main/originals` |
-| Official OpenAI | OpenAI skills from `openai/skills` plus local Codex OpenAI cache entries. | `Skill Installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/openai-official` |
-| Claude Code | Anthropic skills plus local Claude Code-style skills found on this machine. | `Skill Installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/claude-code` |
-| Gemini | Gemini CLI skills plus local Gemini-related skills found on this machine. | `Skill Installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/gemini` |
-| Cursor | Cursor rules/skill locations checked; no installable `SKILL.md` files found yet. | `Skill Installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/cursor` |
+| Guided setup | Starts from this README so the agent can ask what you need before installing. | `$skill-starter install https://github.com/iice257/Skills/readme.md` |
+| Lightweight quickstart | Small starter setup without installing everything. | `$skill-starter install https://github.com/iice257/Skills/tree/main/categories/lightweight-quickstart` |
+| Web development setup | Frontend, design, browser testing, CI, and deployment. | `$skill-starter install https://github.com/iice257/Skills/tree/main/categories/web-development-setup` |
+| Full startup | Installs the full skill catalog. | `$skill-starter install https://github.com/iice257/Skills/tree/main/categories/full-startup` |
+| Favourites | Installs the current capped favourites shortlist. | `$skill-starter install https://github.com/iice257/Skills/tree/main/favourites` |
+| Reccomended | Installs 15 broad all-round dev workflow skills with category spread. | `$skill-starter install https://github.com/iice257/Skills/tree/main/reccomended` |
+| My originals | Installs my originals/custom skills. | `$skill-starter install https://github.com/iice257/Skills/tree/main/originals` |
+| Official OpenAI | OpenAI skills from `openai/skills` plus local Codex OpenAI cache entries. | `$skill-starter install https://github.com/iice257/Skills/tree/main/categories/openai-official` |
+| Claude Code | Anthropic skills plus local Claude Code-style skills found on this machine. | `$skill-starter install https://github.com/iice257/Skills/tree/main/categories/claude-code` |
+| Gemini | Gemini CLI skills plus local Gemini-related skills found on this machine. | `$skill-starter install https://github.com/iice257/Skills/tree/main/categories/gemini` |
+| Cursor | Cursor rules/skill locations checked; no installable `SKILL.md` files found yet. | `$skill-starter install https://github.com/iice257/Skills/tree/main/categories/cursor` |
 
 After installing skills in Codex, restart Codex so the new skills are picked up.
 

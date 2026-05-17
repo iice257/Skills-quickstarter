@@ -1,9 +1,9 @@
-﻿# Deployment
+# Deployment
 
 Deployment workflows for web projects.
 
 ```text
-$skill-installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/deployment
+$skill-starter install https://github.com/iice257/Skills/tree/main/categories/deployment
 ```
 
 | Skill | Why |

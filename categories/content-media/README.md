@@ -1,9 +1,9 @@
-﻿# Content Media
+# Content Media
 
 Images, audio, screenshots, transcription, and publishing workflows.
 
 ```text
-$skill-installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/content-media
+$skill-starter install https://github.com/iice257/Skills/tree/main/categories/content-media
 ```
 
 | Skill | Why |

@@ -1,4 +1,4 @@
-﻿# Gemini Skills
+# Gemini Skills
 
 Gemini CLI GitHub skills plus Gemini-related local `SKILL.md` folders found on this machine. This pack is separate from favourites.
 
@@ -23,5 +23,5 @@ GitHub source checked: https://github.com/google-gemini/gemini-cli
 Install prompt:
 
 ```text
-Skill Installer install the skills listed at https://github.com/iice257/Skills/tree/main/gemini
+$skill-starter install https://github.com/iice257/Skills/tree/main/gemini
 ```

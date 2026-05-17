@@ -1,9 +1,9 @@
-﻿# Browser Testing
+# Browser Testing
 
 Browser automation, screenshots, and rendered UI verification.
 
 ```text
-$skill-installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/browser-testing
+$skill-starter install https://github.com/iice257/Skills/tree/main/categories/browser-testing
 ```
 
 | Skill | Why |

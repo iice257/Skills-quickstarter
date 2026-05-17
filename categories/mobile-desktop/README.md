@@ -1,9 +1,9 @@
-﻿# Mobile Desktop
+# Mobile Desktop
 
 Desktop app and app-adjacent workflows.
 
 ```text
-$skill-installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/mobile-desktop
+$skill-starter install https://github.com/iice257/Skills/tree/main/categories/mobile-desktop
 ```
 
 | Skill | Why |

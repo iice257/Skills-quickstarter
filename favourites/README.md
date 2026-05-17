@@ -1,4 +1,4 @@
-﻿# Favourites
+# Favourites
 
 Max 6 skills at any given time.
 
@@ -14,5 +14,5 @@ Max 6 skills at any given time.
 Paste into your agent:
 
 ```text
-Skill Installer install the skills listed at https://github.com/iice257/Skills/tree/main/favourites
+$skill-starter install https://github.com/iice257/Skills/tree/main/favourites
 ```

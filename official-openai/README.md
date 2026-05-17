@@ -1,4 +1,4 @@
-ï»¿# Official OpenAI Skills
+# Official OpenAI Skills
 
 Official OpenAI skills from GitHub `openai/skills` plus local Codex system/plugin/runtime cache entries. This pack is separate from my originals and favourites.
 
@@ -109,7 +109,7 @@ GitHub source checked: https://github.com/openai/skills
 | `openai-local-vercel-env-vars` | `env-vars` | Local OpenAI curated vercel skill | Vercel environment variable expert guidance. Use when working with .env files, vercel env commands, OIDC tokens, or managing environment-specific c... |
 | `openai-local-vercel-geist` | `geist` | Local OpenAI curated vercel skill | Expert guidance for Geist, Vercel's default typography system and font family for precise Next.js interfaces. Use when configuring Geist Sans, Geis... |
 | `openai-local-vercel-geistdocs` | `geistdocs` | Local OpenAI curated vercel skill | Expert guidance for Geistdocs, Vercel's documentation template built with Next.js and Fumadocs - MDX authoring, configuration, AI chat, i18n, fee... |
-| `openai-local-vercel-investigation-mode` | `investigation-mode` | Local OpenAI curated vercel skill | Orchestrated debugging coordinator. Triggers on frustration signals (stuck, hung, broken, waiting) and systematically triages: runtime logs â€ â€™ wor... |
+| `openai-local-vercel-investigation-mode` | `investigation-mode` | Local OpenAI curated vercel skill | Orchestrated debugging coordinator. Triggers on frustration signals (stuck, hung, broken, waiting) and systematically triages: runtime logs †’ wor... |
 | `openai-local-vercel-json-render` | `json-render` | Local OpenAI curated vercel skill | AI chat response rendering guidance - handling UIMessage parts, tool call displays, streaming states, and structured data presentation. Use when ... |
 | `openai-local-vercel-marketplace` | `marketplace` | Local OpenAI curated vercel skill | Vercel Marketplace expert guidance - discovering, installing, and building integrations, auto-provisioned environment variables, unified billing,... |
 | `openai-local-vercel-micro` | `micro` | Local OpenAI curated vercel skill | Expert guidance for micro - asynchronous HTTP microservices framework by Vercel. Use when building lightweight HTTP servers, API endpoints, or mi... |
@@ -138,11 +138,11 @@ GitHub source checked: https://github.com/openai/skills
 | `openai-local-vercel-vercel-sandbox` | `vercel-sandbox` | Local OpenAI curated vercel skill | Vercel Sandbox guidance - ephemeral Firecracker microVMs for running untrusted code safely. Supports AI agents, code generation, and experimentat... |
 | `openai-local-vercel-vercel-services` | `vercel-services` | Local OpenAI curated vercel skill | Vercel Services - deploy multiple services within a single Vercel project. Use for monorepo layouts or when combining a backend (Python, Go) with... |
 | `openai-local-vercel-vercel-storage` | `vercel-storage` | Local OpenAI curated vercel skill | Vercel storage expert guidance - Blob, Edge Config, and Marketplace storage (Neon Postgres, Upstash Redis). Use when choosing, configuring, or us... |
-| `openai-local-vercel-verification` | `verification` | Local OpenAI curated vercel skill | Full-story verification - infers what the user is building, then verifies the complete flow end-to-end: browser â€ â€™ API â€ â€™ data â€ â€™ response. Tr... |
+| `openai-local-vercel-verification` | `verification` | Local OpenAI curated vercel skill | Full-story verification - infers what the user is building, then verifies the complete flow end-to-end: browser †’ API †’ data †’ response. Tr... |
 | `openai-local-vercel-workflow` | `workflow` | Local OpenAI curated vercel skill | Vercel Workflow DevKit (WDK) expert guidance. Use when building durable workflows, long-running tasks, API routes or agents that need pause/resume,... |
 
 Install prompt:
 
 ```text
-Skill Installer install the skills listed at https://github.com/iice257/Skills/tree/main/official-openai
+$skill-starter install https://github.com/iice257/Skills/tree/main/official-openai
 ```

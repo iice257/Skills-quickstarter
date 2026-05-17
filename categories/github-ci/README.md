@@ -1,9 +1,9 @@
-﻿# GitHub CI
+# GitHub CI
 
 GitHub Actions, PR review comments, and repo workflow.
 
 ```text
-$skill-installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/github-ci
+$skill-starter install https://github.com/iice257/Skills/tree/main/categories/github-ci
 ```
 
 | Skill | Why |

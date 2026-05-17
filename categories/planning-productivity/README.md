@@ -1,9 +1,9 @@
-﻿# Planning Productivity
+# Planning Productivity
 
 Measured project improvement, idea shaping, MVP routing, skill discovery, handoff, and complete output.
 
 ```text
-$skill-installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/planning-productivity
+$skill-starter install https://github.com/iice257/Skills/tree/main/categories/planning-productivity
 ```
 
 | Skill | Why |

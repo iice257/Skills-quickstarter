@@ -1,4 +1,4 @@
-﻿# Idea Launcher
+# Idea Launcher
 
 Idea Launcher is a local Codex skill for turning rough app, tool, game, automation, and data-product ideas into build-ready specs, task plans, verification checklists, deploy plans, and runnable starter projects.
 
@@ -9,7 +9,7 @@ It is designed as a one-person software factory: clarify the idea quickly, cut s
 Install the skill into Codex with the skill installer:
 
 ```text
-$skill-installer install https://github.com/iice257/Skills/tree/main/all/idea-launcher
+$skill-starter install https://github.com/iice257/Skills/tree/main/all/idea-launcher
 ```
 
 Use it inside Codex:

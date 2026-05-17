@@ -1,9 +1,9 @@
-﻿# AI API
+# AI API
 
 AI API development and media model workflows.
 
 ```text
-$skill-installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/ai-api
+$skill-starter install https://github.com/iice257/Skills/tree/main/categories/ai-api
 ```
 
 | Skill | Why |

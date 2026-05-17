@@ -5,7 +5,7 @@ Frontend, design, testing, review, and deploy setup.
 Paste into your agent:
 
 ```text
-$skill-installer install the skills listed at https://github.com/iice257/Skills/tree/main/categories/web-development-setup
+$skill-starter install https://github.com/iice257/Skills/tree/main/categories/web-development-setup
 ```
 
 ## Skills
