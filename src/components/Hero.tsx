@@ -1,6 +1,6 @@
 import { ArrowRight, Check, Copy, Play } from "lucide-react";
 import { useState } from "react";
-import { commands, trustItems } from "../data";
+import { commands, orchestrationCopy, trustItems } from "../data";
 import type { SectionKey } from "../data";
 
 type HeroProps = {
@@ -56,6 +56,7 @@ export function Hero({ onNavigate }: HeroProps) {
             Curated skills, scenario bundles, provider packs, and category paths for Codex and other
             agentic IDEs. Install only what you need.
           </p>
+          <p className="hero-orchestration">{orchestrationCopy}</p>
 
           <div className="hero-actions">
             <a

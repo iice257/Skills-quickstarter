@@ -22,7 +22,9 @@ import {
   TerminalSquare,
   TestTube2,
   WandSparkles,
-  Workflow
+  Workflow,
+  Network,
+  Ship
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -139,7 +141,7 @@ export const needCards = [
     icon: WandSparkles,
     command: installCommand("tree/main/originals"),
     summary: "Installs my originals and custom additions from the dedicated folder.",
-    includes: ["Idea launcher", "Handoff", "Publishing", "Workflow helpers"]
+    includes: ["Idea launcher", "Handoff", "Publishing", "Orchestrate", "Ship"]
   }
 ];
 
@@ -260,7 +262,7 @@ export const scenarios: Scenario[] = [
     icon: Lightbulb,
     command: installCommand("tree/main/categories/planning-productivity"),
     summary: "Installs planning and productivity workflows for shaping ideas and handing off work.",
-    includes: ["idea-launcher", "find-skills", "imessage-handoff", "full-output-enforcement"]
+    includes: ["idea-launcher", "find-skills", "orchestrate", "ship", "imessage-handoff", "full-output-enforcement"]
   }
 ];
 
@@ -361,6 +363,45 @@ export const favorites = [
     command: installCommand("tree/main/favourites/skills-update"),
     summary: "Adds the updater workflow for keeping installed starter-pack skills current.",
     includes: ["skill refresh", "path checks", "update workflow"]
+  }
+];
+
+export const releaseNote = {
+  id: "2026-10-20-orchestrate-ship",
+  date: "20 Oct 2026",
+  title: "Two new originals",
+  text: "orchestrate runs a session as a model-tiered orchestrator. ship commits, pushes, merges and deploys in one command."
+};
+
+export const orchestrationCopy =
+  "A frontier model is the boss and planner. Medium agents execute the build work relentlessly, small agents take tiny well-defined tasks, and every line manager reviews its subagents' work, so you get the best output while saving tokens.";
+
+export const newSkills = [
+  {
+    name: "Orchestrate",
+    description:
+      "Run a session as the orchestrator: a frontier model plans, medium agents build, small agents take tiny tasks.",
+    href: `${repoUrl}/tree/main/originals/orchestrate`,
+    icon: Network,
+    command: installCommand("tree/main/all/orchestrate"),
+    summary:
+      "Works in model tiers, not fixed model names. The frontier model researches, plans, reviews and merges but builds nothing. Medium agents execute relentlessly, small agents take only tiny well-defined tasks, and every agent with subagents inspects their work before accepting it.",
+    includes: [
+      "frontier / medium / small tiers",
+      "line-manager review",
+      "worktree per parallel builder",
+      "resume a stopped builder"
+    ]
+  },
+  {
+    name: "Ship",
+    description: "Commit, push, merge and deploy finished work in one step.",
+    href: `${repoUrl}/tree/main/originals/ship`,
+    icon: Ship,
+    command: installCommand("tree/main/all/ship"),
+    summary:
+      "Wraps the ship CLI: picks a commit type from the work, writes a one-sentence summary, then commits, pushes, merges and deploys, and reports a single summary line.",
+    includes: ["typed commits", "push and merge", "deploy", "dry-run mode"]
   }
 ];
 

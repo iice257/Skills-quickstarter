@@ -208,3 +208,5 @@ official-openai/openai-local-vercel-vercel-services
 official-openai/openai-local-vercel-vercel-storage
 official-openai/openai-local-vercel-verification
 official-openai/openai-local-vercel-workflow
+all/ship
+all/orchestrate

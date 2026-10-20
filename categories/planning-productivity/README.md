@@ -15,3 +15,5 @@ $skill-starter install https://github.com/iice257/Skills/tree/main/categories/pl
 | `full-output-enforcement` | Complete generated artifacts. |
 | `imessage-handoff` | Thread handoff workflow. |
 | `x-publisher` | Draft and publish short-form updates. |
+| `ship` | Commit, push, merge and deploy finished work in one step. |
+| `orchestrate` | Run a session as a model-tiered orchestrator with line-manager review. |
