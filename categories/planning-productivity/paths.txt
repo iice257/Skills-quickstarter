@@ -5,3 +5,5 @@ all/find-skills
 all/full-output-enforcement
 all/imessage-handoff
 all/x-publisher
+all/ship
+all/orchestrate

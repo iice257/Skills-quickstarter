@@ -23,3 +23,5 @@ For installation, the most reliable paths are the matching canonical copies unde
 | `x-publisher` | `all/x-publisher` |
 | `find-skills` | `all/find-skills` |
 | `gemini-api-dev` | `all/gemini-api-dev` |
+| `ship` | `all/ship` |
+| `orchestrate` | `all/orchestrate` |
