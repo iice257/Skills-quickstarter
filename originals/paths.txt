@@ -15,3 +15,5 @@ all/imessage-handoff
 all/x-publisher
 all/find-skills
 all/gemini-api-dev
+all/ship
+all/orchestrate

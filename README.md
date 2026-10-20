@@ -1,5 +1,12 @@
 # Skill Starter Pack - AI agent/harness essentials
 
+> [!NOTE]
+> **Release note, 20 Oct 2026: two new originals.**
+> - [`orchestrate`](https://github.com/iice257/Skills/tree/main/all/orchestrate): run a session as a model-tiered orchestrator, with a frontier-model boss, medium executors, small-tier helpers and line-manager review.
+> - [`ship`](https://github.com/iice257/Skills/tree/main/all/ship): commit, push, merge and deploy finished work in one command.
+
+The orchestration workflow: the frontier model is the boss and planner. It researches, writes the spec, reviews and merges, and it builds nothing. Medium agents execute the build work relentlessly until it is right. Small agents take only tiny, well-defined tasks, usually handed down by a medium agent. Every agent that has subagents is a line manager and must review their work before accepting it, so the best output comes out of each agent while tokens are spent where they count.
+
 An agent quick skills starter pack for Codex and other agentic IDEs.
 
 This repo gives your agent installable skill paths, scenario bundles, and MCP config examples so a fresh setup can become useful quickly. It does not run anything by itself; your agent reads the links and installs the skills you choose.

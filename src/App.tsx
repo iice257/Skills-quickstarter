@@ -3,6 +3,8 @@ import { About } from "./components/About";
 import { BottomCta } from "./components/BottomCta";
 import { EcosystemProviders } from "./components/EcosystemProviders";
 import { FavoritesSection } from "./components/FavoritesSection";
+import { NewSkillsSection } from "./components/NewSkillsSection";
+import { ReleaseToast } from "./components/ReleaseToast";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
@@ -47,6 +49,7 @@ function DetailsStack({ multiSelect }: SharedPageProps) {
       </div>
       <EcosystemProviders multiSelect={multiSelect} />
       <About />
+      <NewSkillsSection multiSelect={multiSelect} />
       <FavoritesSection multiSelect={multiSelect} />
       <BottomCta />
     </section>
@@ -147,6 +150,7 @@ function App() {
           setMultiSelectActive(false);
         }}
       />
+      <ReleaseToast />
       <Footer />
     </>
   );

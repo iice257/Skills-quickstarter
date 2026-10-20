@@ -1117,6 +1117,146 @@ a:focus-visible {
   gap: 10px;
 }
 
+.release-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.hero-copy .hero-orchestration {
+  margin-top: 14px;
+  padding-left: 14px;
+  border-left: 1.5px solid var(--lime);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.release-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 70;
+  display: grid;
+  width: min(392px, calc(100vw - 48px));
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 12px;
+  padding: 16px;
+  border: 1.5px solid var(--ink);
+  border-radius: 8px;
+  background: var(--card);
+  box-shadow: 8px 8px 0 #d9d8cf;
+  animation: toastIn 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.release-toast-icon {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border: 1.5px solid var(--ink);
+  border-radius: 4px;
+  background: var(--lime);
+  color: var(--ink);
+}
+
+.release-toast-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.release-toast-body {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.release-toast-meta {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.release-toast-body strong {
+  font-family: "Syne", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.release-toast-body p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.release-toast-link {
+  margin-top: 6px;
+  align-self: flex-start;
+  border-bottom: 1.5px solid var(--lime);
+  font-size: 12px;
+  font-weight: 500;
+  transition: border-color 150ms ease;
+}
+
+.release-toast-link:hover {
+  border-color: var(--ink);
+}
+
+.release-toast-close {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 1.5px solid var(--border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    transform 120ms ease;
+}
+
+.release-toast-close:hover {
+  border-color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.release-toast-close svg {
+  width: 14px;
+  height: 14px;
+}
+
+@media (max-width: 700px) {
+  .release-toast {
+    right: 14px;
+    bottom: 74px;
+    left: 14px;
+    width: auto;
+    padding: 14px;
+    box-shadow: 5px 5px 0 #d9d8cf;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .release-toast {
+    animation: none;
+  }
+}
+
 .provider-card {
   display: flex;
   min-height: 190px;
