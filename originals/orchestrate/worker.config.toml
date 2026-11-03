@@ -1,0 +1,33 @@
+# Lean profile for codex-worker builders (codex exec -p worker).
+# Layered on top of ~/.codex/config.toml. Builders only need the shell and file edits,
+# so the desktop app's plugins, apps and browser MCP are switched off to cut startup context.
+model_reasoning_summary = "none"
+
+[plugins."codex-app-tools@openai-bundled"]
+enabled = false
+[plugins."chrome@openai-bundled"]
+enabled = false
+[plugins."visualize@openai-bundled"]
+enabled = false
+[plugins."documents@openai-primary-runtime"]
+enabled = false
+[plugins."pdf@openai-primary-runtime"]
+enabled = false
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = false
+[plugins."presentations@openai-primary-runtime"]
+enabled = false
+[plugins."template-creator@openai-primary-runtime"]
+enabled = false
+[plugins."browser@openai-bundled"]
+enabled = false
+[plugins."unified-computer-use@openai-bundled"]
+enabled = false
+[plugins."computer-use@openai-bundled"]
+enabled = false
+
+[mcp_servers.node_repl]
+enabled = false
+
+[apps._default]
+enabled = false

@@ -43,10 +43,10 @@ export function ReleaseToast() {
         <p>{releaseNote.text}</p>
         <a
           className="release-toast-link"
-          href="#new"
+          href="#orchestrate-v2"
           onClick={(event) => {
             event.preventDefault();
-            document.getElementById("new")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            document.getElementById("orchestrate-v2")?.scrollIntoView({ behavior: "smooth", block: "start" });
             dismiss();
           }}
         >

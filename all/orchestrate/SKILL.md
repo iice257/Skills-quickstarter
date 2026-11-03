@@ -13,23 +13,53 @@ Work in model tiers, not fixed model names, so this stays accurate as new models
 - **Small tier:** only for absolutely small, well-defined tasks. The frontier model can hand those to small agents, but should usually hand work to medium agents. A medium agent hands its own small, well-defined subtasks to small agents.
 - **Line-manager rule:** any agent that has subagents is a line manager. It must inspect the work it receives and confirm it meets the standards before accepting it as complete and moving on. Inspect thoroughly but efficiently: the goal is the best output from the agents with the most efficient use of tokens.
 
-**In this setup today:** frontier = Opus 5.5 (`claude-opus-5-5`), medium = Sonnet 5.5 (`model: sonnet`), small = Haiku 5.5 (`model: haiku`). Always set the model explicitly when spawning.
+## Two accounts, two quota pools
+
+The owner runs Claude Pro and ChatGPT Plus side by side. Claude Pro is the scarcer pool, so the boss stays lean and the build work runs on the ChatGPT plan through Codex. A different model family building and reviewing also catches more mistakes than one model checking itself.
+
+| Tier | Today | Account | How to call it |
+|---|---|---|---|
+| Frontier (boss) | Opus 5.5 (`claude-opus-5-5`) | Claude Pro | this session |
+| Medium (default builder) | GPT-6.1 Sol in Codex | ChatGPT Plus | `codex-worker run ... --effort medium` |
+| Medium (fallback) | Sonnet 5.5 (`model: "sonnet"`) | Claude Pro | Agent tool, `isolation: "worktree"` |
+| Small | Codex `--effort low`, or Haiku 5.5 (`model: "haiku"`) for quick read-only lookups | either | `codex-worker` / Agent tool |
+
+- Effort on Codex: `low` for mechanical edits, `medium` by default, `high` for hard features, `xhigh` only for a stubborn bug. Higher effort burns the Plus window fast.
+- Fall back to Sonnet only when Codex is rate-limited (`codex-worker` exits 3, `status: "rate_limited"`), or the task needs Claude-only tools (claude.ai artifacts, Claude Docs, the browser pane, MCP connectors only Claude has).
+- At most 2-3 Codex builders at once on Plus. Batch tiny tasks into one brief: each model call in a run resends about 19k tokens of base context (with the lean `worker` profile, which `codex-worker` uses automatically), and most of a run's input is cached.
+
+## codex-worker
+
+`codex-worker` (bundled in this skill's `bin/`; copy it onto your PATH, and `worker.config.toml` into `~/.codex/` as the lean `worker` profile) runs one Codex builder in its own git worktree and branch, and prints one JSON line plus Codex's final report.
+
+```bash
+codex-worker run --title "<slug>" --brief <plan.md|-> [--effort medium] [--base main] [--timeout 30]
+codex-worker resume <name> --brief "<review fixes>"   # same Codex thread, same worktree
+codex-worker list
+codex-worker clean <name>                            # after merging: worktree, merged branch, run folder
+```
+
+- Start every run with the Bash tool and `run_in_background: true`. The harness wakes you when it exits, so never poll.
+- A run counts as done only when exit code 0, a `turn.completed` event and the report file all agree (`status: "done"`).
+- Worktrees live in `~/.codex-worktrees/<name>`, and logs in `~/.codex-worktrees/_runs/<name>/` (`brief.md`, `events.jsonl`, `last.md`, `meta.json`).
+- Runs cap at 30 minutes. Split bigger work into chunks and resume with a digest rather than one long run.
 
 ## Steps
 
 1. **Restate.** Restate the goal (`$ARGUMENTS`, or the conversation) in 3-5 lines. Ask only questions that are genuinely blocking.
 2. **Explore read-only.** Use a read-only Explore subagent, or your own Read, Grep and Glob, to map the relevant code.
 3. **Write the spec and plans.** Write the spec to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`. Split independent workstreams into separate plans at `docs/superpowers/plans/`, each with exact files, interfaces and tests. Commit them on a plan branch.
-4. **Dispatch builders.** One medium-tier subagent per workstream: Agent tool with the model set explicitly (today `model: "sonnet"`), `isolation: "worktree"` and `run_in_background: true`. Parallel builders get separate worktrees.
-   - Each brief is self-contained: plan path, branch name, rules, which files are off-limits because of parallel work, the commands to run before each commit, push the branch, no PR or merge, and the report format.
+4. **Dispatch builders.** One builder per workstream, on Codex by default: `codex-worker run --title <slug> --brief <plan path> --base <plan branch>` in the background. Parallel builders each get their own worktree automatically.
+   - Each brief is self-contained: the plan path, the rules, which files are off-limits because of parallel work, the commands to run before each commit, "commit on your branch, no push, PR or merge", and the report format (what changed, test results, open issues).
    - Workstreams that touch the same files run in sequence, not in parallel.
-   - Tiny, well-defined subtasks may go to small-tier agents (today `model: "haiku"`), usually via a medium agent.
+   - Sonnet fallback: Agent tool with `model: "sonnet"`, `isolation: "worktree"` and `run_in_background: true`, with the same brief.
 5. **Never build yourself.** The frontier orchestrator builds nothing: no product code, scripts or config edits. It only reads, plans, reviews, merges and does ops (secrets, releases, deploy hooks, workflow runs).
-6. **Resume, don't redo.** If a builder stops (rate limit or error), resume that same builder with SendMessage once the limit resets.
+6. **Resume, don't redo.** If a builder stops (rate limit or error), resume that same builder: `codex-worker resume <name>` for Codex, SendMessage for a Sonnet agent. If Codex stays limited, hand the remaining plan and the branch to a Sonnet builder.
 7. **Review each branch (line-manager rule).** Every agent that has subagents reviews their work before accepting it; the orchestrator does the same for its builders.
-   - Read the diff of key files.
+   - Read the diff of key files (`git -C <worktree> diff <base>...HEAD`).
    - Run the checks and tests in its worktree.
    - Do a browser check for UI changes.
-   - Send fixes back to the same builder.
-8. **Land the work.** Use `ship`, or a PR plus a merge once CI is green. Remove worktrees and merged branches afterwards.
+   - Send fixes back to the same builder (`codex-worker resume`).
+   - Cross-family review: Claude reviews Codex's work; for work Sonnet built, also get a Codex review (`codex exec review` in the worktree, or `/codex:review` if the Codex plugin is installed).
+8. **Land the work.** Merge the branch and use `ship`, or a PR plus a merge once CI is green. Then `codex-worker clean <name>` (or remove the Sonnet worktree) and delete merged branches.
 9. **Keep the owner informed.** Short status lines: what is running, what landed, and what needs them. Never ask them to relay messages between sessions.

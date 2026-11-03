@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { About } from "./components/About";
+import { AnnounceBar } from "./components/AnnounceBar";
+import { OrchestrateV2Section } from "./components/OrchestrateV2Section";
 import { BottomCta } from "./components/BottomCta";
 import { EcosystemProviders } from "./components/EcosystemProviders";
 import { FavoritesSection } from "./components/FavoritesSection";
@@ -49,6 +51,7 @@ function DetailsStack({ multiSelect }: SharedPageProps) {
       </div>
       <EcosystemProviders multiSelect={multiSelect} />
       <About />
+      <OrchestrateV2Section />
       <NewSkillsSection multiSelect={multiSelect} />
       <FavoritesSection multiSelect={multiSelect} />
       <BottomCta />
@@ -135,6 +138,7 @@ function App() {
 
   return (
     <>
+      <AnnounceBar />
       <Header activeSection={activeSection} onNavigate={handleNavigate} />
       <HomePage multiSelect={multiSelect} onNavigate={handleNavigate} />
       <MultiSelectFab
