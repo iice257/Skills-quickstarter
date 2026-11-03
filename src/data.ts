@@ -367,10 +367,49 @@ export const favorites = [
 ];
 
 export const releaseNote = {
-  id: "2026-10-20-orchestrate-ship",
-  date: "20 Oct 2026",
-  title: "Two new originals",
-  text: "orchestrate runs a session as a model-tiered orchestrator. ship commits, pushes, merges and deploys in one command."
+  id: "2026-11-03-orchestrate-v2",
+  date: "3 Nov 2026",
+  title: "Orchestrate v2",
+  text: "Two accounts, two quota pools: Claude plans and reviews, Codex builds in its own worktrees through the new codex-worker runner."
+};
+
+export const orchestrateV2 = {
+  command: "/orchestrate --v2",
+  install: installCommand("tree/main/all/orchestrate"),
+  intro:
+    "Version 2 splits the work across two subscriptions. Claude Pro is the scarcer pool, so the frontier model stays lean and only thinks: it plans, writes the specs, reviews and merges. The build work runs on ChatGPT Plus through Codex, and a different model family reviewing each branch catches more mistakes than one model checking itself.",
+  changes: [
+    {
+      title: "Codex builds, Claude reviews",
+      text: "Builders run as GPT-6.1 Sol in Codex by default. Sonnet takes over only when Codex is rate-limited or the task needs Claude-only tools."
+    },
+    {
+      title: "codex-worker runner",
+      text: "One command starts a builder in its own git worktree and branch, runs in the background, and prints a JSON status line plus the builder's report."
+    },
+    {
+      title: "Resume, don't redo",
+      text: "A stopped builder picks up in the same Codex thread and worktree with codex-worker resume, so no work or context is thrown away."
+    },
+    {
+      title: "Honest status",
+      text: "A run counts as done only when the exit code, the completion event and the report file all agree. Rate limits exit with code 3 so the fallback can kick in."
+    },
+    {
+      title: "Lean worker profile",
+      text: "worker.config.toml turns off plugins, MCP servers and reasoning summaries for builder runs, which cuts the base context resent on every model call."
+    },
+    {
+      title: "Cross-family review",
+      text: "Claude reviews what Codex built. When Sonnet built it, Codex reviews it. Every line manager still inspects its subagents' work before accepting it."
+    }
+  ],
+  tiers: [
+    { tier: "Frontier", role: "Plans, reviews, merges. Builds nothing.", model: "Opus 5.5", account: "Claude Pro" },
+    { tier: "Medium", role: "Default builder", model: "GPT-6.1 Sol in Codex", account: "ChatGPT Plus" },
+    { tier: "Medium fallback", role: "When Codex is rate-limited", model: "Sonnet 5.5", account: "Claude Pro" },
+    { tier: "Small", role: "Tiny, well-defined tasks", model: "Codex low effort or Haiku 5.5", account: "Either" }
+  ]
 };
 
 export const orchestrationCopy =
