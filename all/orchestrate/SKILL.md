@@ -44,13 +44,24 @@ codex-worker clean <name>                            # after merging: worktree, 
 - Worktrees live in `~/.codex-worktrees/<name>`, and logs in `~/.codex-worktrees/_runs/<name>/` (`brief.md`, `events.jsonl`, `last.md`, `meta.json`).
 - Runs cap at 30 minutes. Split bigger work into chunks and resume with a digest rather than one long run.
 
+## Briefs: don't pay twice
+
+A brief that already contains the finished code makes the builder re-type it, re-run it and re-explain it, which costs the tokens twice and adds retyping mistakes.
+
+- **A brief states** the goal, the files and area, the constraints and rules, the design decisions the boss made (as decisions, with the why), exact values only where precision matters (copy, colours, API shapes, one-line regexes), the commands to verify, and what done looks like.
+- **A brief never contains** a full function, component, stylesheet or test body that the builder is expected to copy in. If you catch yourself writing that, stop: either you are building (not allowed), or the work is deterministic and should be handled as below.
+- **Deterministic work** (a codemod, rename, regeneration, format pass, dependency bump) is a script or patch file saved to the scratchpad. The brief tells the builder to run it, check the result and fix what fails. The boss writes the tool, not prose around it, and tests it once.
+- **Cost test before dispatch:** if the brief would be about as long as the change, the brief is the wrong tool. Use the deterministic route above, or shrink the brief to goal, constraints and checks and let the builder write the code.
+- **Small, fully specified edits** (a few lines, exact text known) go to a small-tier agent at `--effort low` or Haiku with the exact edit, not to a medium builder with a long brief.
+- **Reuse, don't restate.** Point at the file, spec or existing code to follow instead of pasting it. Keep the brief under about a page; a longer one usually means the design is not finished.
+
 ## Steps
 
 1. **Restate.** Restate the goal (`$ARGUMENTS`, or the conversation) in 3-5 lines. Ask only questions that are genuinely blocking.
 2. **Explore read-only.** Use a read-only Explore subagent, or your own Read, Grep and Glob, to map the relevant code.
 3. **Write the spec and plans.** Write the spec to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`. Split independent workstreams into separate plans at `docs/superpowers/plans/`, each with exact files, interfaces and tests. Commit them on a plan branch.
 4. **Dispatch builders.** One builder per workstream, on Codex by default: `codex-worker run --title <slug> --brief <plan path> --base <plan branch>` in the background. Parallel builders each get their own worktree automatically.
-   - Each brief is self-contained: the plan path, the rules, which files are off-limits because of parallel work, the commands to run before each commit, "commit on your branch, no push, PR or merge", and the report format (what changed, test results, open issues).
+   - Each brief is self-contained (and follows "Briefs: don't pay twice" above): the plan path, the rules, which files are off-limits because of parallel work, the commands to run before each commit, "commit on your branch, no push, PR or merge", and the report format (what changed, test results, open issues).
    - Workstreams that touch the same files run in sequence, not in parallel.
    - Sonnet fallback: Agent tool with `model: "sonnet"`, `isolation: "worktree"` and `run_in_background: true`, with the same brief.
 5. **Never build yourself.** The frontier orchestrator builds nothing: no product code, scripts or config edits. It only reads, plans, reviews, merges and does ops (secrets, releases, deploy hooks, workflow runs).
