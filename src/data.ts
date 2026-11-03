@@ -384,6 +384,10 @@ export const orchestrateV2 = {
       text: "Builders run as GPT-6.1 Sol in Codex by default. Sonnet takes over only when Codex is rate-limited or the task needs Claude-only tools."
     },
     {
+      title: "Briefs that don't pay twice",
+      text: "Briefs state the goal, constraints and checks, never the finished code. Deterministic work ships as a script or patch the builder runs, so nobody re-types what was already written."
+    },
+    {
       title: "codex-worker runner",
       text: "One command starts a builder in its own git worktree and branch, runs in the background, and prints a JSON status line plus the builder's report."
     },
