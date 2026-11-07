@@ -1,6 +1,9 @@
 # Skill Starter Pack - AI agent/harness essentials
 
 > [!NOTE]
+> **Release note, 7 Nov 2026: new original.**
+> - [`deep-think`](https://github.com/iice257/Skills/tree/main/all/deep-think): a five-lens first-principles pressure test for designs and plans (constraints, rebuild from zero, the architect's first rewrite, the day-one breaking test, the disappearing abstraction), gated so it only runs on expensive-to-reverse decisions. Includes an implicit-state-machine audit.
+>
 > **Release note, 20 Oct 2026: two new originals.**
 > - [`orchestrate`](https://github.com/iice257/Skills/tree/main/all/orchestrate): run a session as a model-tiered orchestrator, with a frontier-model boss, medium executors, small-tier helpers and line-manager review.
 > - [`ship`](https://github.com/iice257/Skills/tree/main/all/ship): commit, push, merge and deploy finished work in one command.
