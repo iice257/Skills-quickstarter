@@ -17,3 +17,4 @@ all/find-skills
 all/gemini-api-dev
 all/ship
 all/orchestrate
+all/deep-think

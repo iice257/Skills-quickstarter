@@ -25,3 +25,4 @@ For installation, the most reliable paths are the matching canonical copies unde
 | `gemini-api-dev` | `all/gemini-api-dev` |
 | `ship` | `all/ship` |
 | `orchestrate` | `all/orchestrate` |
+| `deep-think` | `all/deep-think` |

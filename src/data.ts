@@ -24,7 +24,8 @@ import {
   WandSparkles,
   Workflow,
   Network,
-  Ship
+  Ship,
+  Brain
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -367,10 +368,10 @@ export const favorites = [
 ];
 
 export const releaseNote = {
-  id: "2026-11-03-orchestrate-v2",
-  date: "3 Nov 2026",
-  title: "Orchestrate v2",
-  text: "Two accounts, two quota pools: Claude plans and reviews, Codex builds in its own worktrees through the new codex-worker runner."
+  id: "2026-11-07-deep-think",
+  date: "7 Nov 2026",
+  title: "New original: deep-think",
+  text: "A five-lens first-principles pressure test for designs and plans, with a gate so it only fires on decisions that are expensive to reverse."
 };
 
 export const orchestrateV2 = {
@@ -417,9 +418,19 @@ export const orchestrateV2 = {
 };
 
 export const orchestrationCopy =
-  "A frontier model is the boss and planner. Medium agents execute the build work relentlessly, small agents take tiny well-defined tasks, and every line manager reviews its subagents' work, so you get the best output while saving tokens.";
+  "Three originals for how I run agents: deep-think pressure-tests a design before you commit to it, orchestrate splits the work across model tiers with line-manager review, and ship commits, merges and deploys in one step.";
 
 export const newSkills = [
+  {
+    name: "Deep think",
+    description: "Pressure-test a design or plan from first principles before you commit to it.",
+    href: `${repoUrl}/tree/main/originals/deep-think`,
+    icon: Brain,
+    command: installCommand("tree/main/all/deep-think"),
+    summary:
+      "Five lenses in order: the irreducible constraints, a rebuild from zero, what a principal architect would rewrite first, the one test that breaks it on day one, and the abstraction that makes the problem disappear. A strict gate keeps it out of everyday edits: it runs on request, or in planning for decisions that are expensive to reverse. Includes an audit mode that finds the implicit state machines in an app.",
+    includes: ["five-lens review", "well-defined trigger gate", "day-one breaking test", "implicit state machine audit"]
+  },
   {
     name: "Orchestrate",
     description:
