@@ -1,20 +1,23 @@
 import { ArrowRight } from "lucide-react";
-import { orchestrateV2 } from "../data";
+import { releaseNote } from "../data";
+import { goToRelease } from "../releaseNav";
 
 export function AnnounceBar() {
   return (
     <a
       className="announce-bar"
-      href="#orchestrate-v2"
+      href="#new"
       onClick={(event) => {
         event.preventDefault();
-        document.getElementById("orchestrate-v2")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        goToRelease();
       }}
     >
-      <span className="announce-bar-text">Orchestrate has a new version!</span>
-      <code className="announce-bar-command">{orchestrateV2.command}</code>
+      <span className="announce-bar-tag">New</span>
+      <span className="announce-bar-text">
+        <strong>{releaseNote.title}</strong> — see it and hear it before it's built
+      </span>
       <span className="announce-bar-link">
-        What's new <ArrowRight aria-hidden="true" />
+        See the release <ArrowRight aria-hidden="true" />
       </span>
     </a>
   );

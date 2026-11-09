@@ -2356,13 +2356,23 @@ a:focus-visible {
   text-decoration: none;
 }
 
-.announce-bar-command {
+.announce-bar-tag {
   padding: 2px 8px;
   border-radius: 4px;
   background: var(--lime);
   color: var(--ink);
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.announce-bar-text strong {
+  font-weight: 600;
+}
+
+.new-section {
+  scroll-margin-top: 72px;
 }
 
 .announce-bar-link {

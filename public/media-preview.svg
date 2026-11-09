@@ -39,7 +39,7 @@
       <rect width="252" height="215" rx="8" fill="#fffdfa" stroke="#d4d2cb" stroke-width="1.5"/>
       <text x="28" y="88" fill="#0e0e0e" font-family="Arial Black, Syne, sans-serif" font-size="24">Claude Code</text>
       <text x="28" y="124" fill="#0e0e0e" font-family="DM Mono, Consolas, monospace" font-size="17">Anthropic skills</text>
-      <text x="28" y="156" fill="#0e0e0e" font-family="DM Mono, Consolas, monospace" font-size="17">plus local packs.</text>
+      <text x="28" y="156" fill="#0e0e0e" font-family="DM Mono, Consolas, monospace" font-size="17">plus provider packs.</text>
     </g>
     <g transform="translate(0 284)">
       <rect width="252" height="215" rx="8" fill="#fffdfa" stroke="#d4d2cb" stroke-width="1.5"/>

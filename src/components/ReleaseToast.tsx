@@ -1,6 +1,7 @@
 import { Sparkles, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { releaseNote } from "../data";
+import { goToRelease } from "../releaseNav";
 
 const storageKey = `skill-starter:release:${releaseNote.id}`;
 
@@ -43,14 +44,14 @@ export function ReleaseToast() {
         <p>{releaseNote.text}</p>
         <a
           className="release-toast-link"
-          href="#orchestrate-v2"
+          href="#new"
           onClick={(event) => {
             event.preventDefault();
-            document.getElementById("orchestrate-v2")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            goToRelease();
             dismiss();
           }}
         >
-          See what is new
+          See the release
         </a>
       </div>
       <button className="release-toast-close" type="button" aria-label="Dismiss release note" onClick={dismiss}>
