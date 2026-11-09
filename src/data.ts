@@ -25,7 +25,8 @@ import {
   Workflow,
   Network,
   Ship,
-  Brain
+  Brain,
+  AudioWaveform
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -368,10 +369,10 @@ export const favorites = [
 ];
 
 export const releaseNote = {
-  id: "2026-11-07-deep-think",
-  date: "7 Nov 2026",
-  title: "New original: deep-think",
-  text: "A five-lens first-principles pressure test for designs and plans, with a gate so it only fires on decisions that are expensive to reverse."
+  id: "2026-11-09-sensory",
+  date: "9 Nov 2026",
+  title: "New original: sensory",
+  text: "Visual and sound brainstorming. Your agent mocks up 3-5 options from your project's real assets, or synthesises sounds you can play, before it touches any code."
 };
 
 export const orchestrateV2 = {
@@ -418,9 +419,19 @@ export const orchestrateV2 = {
 };
 
 export const orchestrationCopy =
-  "Three originals for how I run agents: deep-think pressure-tests a design before you commit to it, orchestrate splits the work across model tiers with line-manager review, and ship commits, merges and deploys in one step.";
+  "Four originals for how I run agents: sensory mocks up visuals and sounds to pick from before anything gets built, deep-think pressure-tests a design before you commit to it, orchestrate splits the work across model tiers with line-manager review, and ship commits, merges and deploys in one step.";
 
 export const newSkills = [
+  {
+    name: "Sensory",
+    description: "See it and hear it before it's built: visual and sound brainstorming in one pack.",
+    href: `${repoUrl}/tree/main/originals/sensory`,
+    icon: AudioWaveform,
+    command: installCommand("tree/main/all/sensory"),
+    summary:
+      "Two skills that prototype first. Visual brainstorming lays out 3-5 side-by-side mockups on one local page, built from your project's real fonts, tokens, images and components. Sound brainstorming synthesises 3-5 Web Audio candidates with play buttons on your project's own sound helpers, with an ambient bed and a progress slider so you hear them in context. Pick or remix, then the agent builds the winner. Nothing touches your code until you choose.",
+    includes: ["visual-brainstorming", "sound-brainstorming", "reuses your real assets", "pick, remix, then build"]
+  },
   {
     name: "Deep think",
     description: "Pressure-test a design or plan from first principles before you commit to it.",
