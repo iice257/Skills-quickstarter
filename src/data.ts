@@ -271,33 +271,33 @@ export const scenarios: Scenario[] = [
 export const providers = [
   {
     name: "OpenAI",
-    description: "Official OpenAI skills from GitHub and local Codex OpenAI cache entries.",
+    description: "Official OpenAI skills from GitHub, including the Codex OpenAI skills.",
     href: `${repoUrl}/tree/main/categories/openai-official`,
     icon: Bot,
     logoSrc: "/provider-logos/openai.svg",
     command: installCommand("tree/main/categories/openai-official"),
-    summary: "Installs the OpenAI provider pack from official and local Codex entries.",
-    includes: ["openai-docs", "imagegen", "Codex OpenAI cache skills"]
+    summary: "Installs the OpenAI provider pack from official and Codex entries.",
+    includes: ["openai-docs", "imagegen", "Codex OpenAI skills"]
   },
   {
     name: "Claude Code",
-    description: "Anthropic GitHub skills plus local Claude Code-style skills found on this machine.",
+    description: "Anthropic GitHub skills plus Claude Code-style skills.",
     href: `${repoUrl}/tree/main/categories/claude-code`,
     icon: Box,
     logoSrc: "/provider-logos/claude.svg",
     command: installCommand("tree/main/categories/claude-code"),
     summary: "Installs Claude Code-style provider skills and Anthropic source entries.",
-    includes: ["Anthropic skills", "Claude Code-style local skills", "provider references"]
+    includes: ["Anthropic skills", "Claude Code-style skills", "provider references"]
   },
   {
     name: "Gemini",
-    description: "Gemini CLI GitHub skills plus local Gemini-related skills.",
+    description: "Gemini CLI GitHub skills plus Gemini-related skills.",
     href: `${repoUrl}/tree/main/categories/gemini`,
     icon: Gem,
     logoSrc: "/provider-logos/gemini.svg",
     command: installCommand("tree/main/categories/gemini"),
     summary: "Installs Gemini-related skills for Gemini CLI and API development workflows.",
-    includes: ["gemini-api-dev", "Gemini CLI skills", "local Gemini entries"]
+    includes: ["gemini-api-dev", "Gemini CLI skills", "Gemini entries"]
   },
   {
     name: "Cursor",
@@ -429,7 +429,7 @@ export const newSkills = [
     icon: AudioWaveform,
     command: installCommand("tree/main/all/sensory"),
     summary:
-      "Two skills that prototype first. Visual brainstorming lays out 3-5 side-by-side mockups on one local page, built from your project's real fonts, tokens, images and components. Sound brainstorming synthesises 3-5 Web Audio candidates with play buttons on your project's own sound helpers, with an ambient bed and a progress slider so you hear them in context. Pick or remix, then the agent builds the winner. Nothing touches your code until you choose.",
+      "Two skills that prototype first. Visual brainstorming lays out 3-5 side-by-side mockups on one page, built from your project's real fonts, tokens, images and components. Sound brainstorming synthesises 3-5 Web Audio candidates with play buttons on your project's own sound helpers, with an ambient bed and a progress slider so you hear them in context. Pick or remix, then the agent builds the winner. Nothing touches your code until you choose.",
     includes: ["visual-brainstorming", "sound-brainstorming", "reuses your real assets", "pick, remix, then build"]
   },
   {

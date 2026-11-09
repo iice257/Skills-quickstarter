@@ -30,9 +30,9 @@ Paste the command that matches what you want into your AI agent.
 | Favourites | Installs the current capped favourites shortlist. | `$skill-starter install https://github.com/iice257/Skills/tree/main/favourites` |
 | Reccomended | Installs 15 broad all-round dev workflow skills with category spread. | `$skill-starter install https://github.com/iice257/Skills/tree/main/reccomended` |
 | My originals | Installs my originals/custom skills. | `$skill-starter install https://github.com/iice257/Skills/tree/main/originals` |
-| Official OpenAI | OpenAI skills from `openai/skills` plus local Codex OpenAI cache entries. | `$skill-starter install https://github.com/iice257/Skills/tree/main/categories/openai-official` |
-| Claude Code | Anthropic skills plus local Claude Code-style skills found on this machine. | `$skill-starter install https://github.com/iice257/Skills/tree/main/categories/claude-code` |
-| Gemini | Gemini CLI skills plus local Gemini-related skills found on this machine. | `$skill-starter install https://github.com/iice257/Skills/tree/main/categories/gemini` |
+| Official OpenAI | OpenAI skills from `openai/skills` plus the Codex OpenAI skills. | `$skill-starter install https://github.com/iice257/Skills/tree/main/categories/openai-official` |
+| Claude Code | Anthropic skills plus Claude Code-style skills. | `$skill-starter install https://github.com/iice257/Skills/tree/main/categories/claude-code` |
+| Gemini | Gemini CLI skills plus Gemini-related skills. | `$skill-starter install https://github.com/iice257/Skills/tree/main/categories/gemini` |
 | Cursor | Cursor rules/skill locations checked; no installable `SKILL.md` files found yet. | `$skill-starter install https://github.com/iice257/Skills/tree/main/categories/cursor` |
 
 After installing skills in Codex, restart Codex so the new skills are picked up.
@@ -45,9 +45,9 @@ After installing skills in Codex, restart Codex so the new skills are picked up.
 | [`reccomended/`](https://github.com/iice257/Skills/tree/main/reccomended) | Top 15 all-round dev workflow skills with no duplicates and broad category spread. |
 | [`originals/`](https://github.com/iice257/Skills/tree/main/originals) | My originals: skills authored/customized by me and other non-stock additions. |
 | [`all/`](https://github.com/iice257/Skills/tree/main/all) | Canonical installable copy of the core starter catalog and my non-provider skills. |
-| [`official-openai/`](https://github.com/iice257/Skills/tree/main/official-openai) | Official OpenAI skills from GitHub and local Codex OpenAI cache entries. |
-| [`claude-code/`](https://github.com/iice257/Skills/tree/main/claude-code) | Anthropic GitHub skills plus local Claude Code-style skills. |
-| [`gemini/`](https://github.com/iice257/Skills/tree/main/gemini) | Gemini CLI GitHub skills plus local Gemini-related skills. |
+| [`official-openai/`](https://github.com/iice257/Skills/tree/main/official-openai) | Official OpenAI skills from GitHub, including the Codex OpenAI skills. |
+| [`claude-code/`](https://github.com/iice257/Skills/tree/main/claude-code) | Anthropic GitHub skills plus Claude Code-style skills. |
+| [`gemini/`](https://github.com/iice257/Skills/tree/main/gemini) | Gemini CLI GitHub skills plus Gemini-related skills. |
 | [`cursor/`](https://github.com/iice257/Skills/tree/main/cursor) | Cursor rules/skill check notes; no installable `SKILL.md` files found yet. |
 | [`categories/`](https://github.com/iice257/Skills/tree/main/categories) | Scenario bundles for different agent setups. |
 | [`mcps/`](https://github.com/iice257/Skills/tree/main/mcps) | MCP config examples. |
@@ -71,9 +71,9 @@ After installing skills in Codex, restart Codex so the new skills are picked up.
 | AI API | Gemini, image generation, speech, and transcription APIs. | [Open](https://github.com/iice257/Skills/tree/main/categories/ai-api) |
 | Mobile desktop | WinUI, iOS-adjacent MCP references, screenshots, and app workflows. | [Open](https://github.com/iice257/Skills/tree/main/categories/mobile-desktop) |
 | Planning productivity | Idea shaping, skill discovery, handoff, and complete output. | [Open](https://github.com/iice257/Skills/tree/main/categories/planning-productivity) |
-| Official OpenAI | OpenAI provider skills from GitHub and local Codex cache. | [Open](https://github.com/iice257/Skills/tree/main/categories/openai-official) |
-| Claude Code | Anthropic GitHub skills and local Claude Code-style skills. | [Open](https://github.com/iice257/Skills/tree/main/categories/claude-code) |
-| Gemini | Gemini CLI GitHub skills and local Gemini skills. | [Open](https://github.com/iice257/Skills/tree/main/categories/gemini) |
+| Official OpenAI | OpenAI provider skills from GitHub and Codex. | [Open](https://github.com/iice257/Skills/tree/main/categories/openai-official) |
+| Claude Code | Anthropic GitHub skills and Claude Code-style skills. | [Open](https://github.com/iice257/Skills/tree/main/categories/claude-code) |
+| Gemini | Gemini CLI GitHub skills and Gemini skills. | [Open](https://github.com/iice257/Skills/tree/main/categories/gemini) |
 | Cursor | Cursor rules/skill locations checked; no `SKILL.md` files found. | [Open](https://github.com/iice257/Skills/tree/main/categories/cursor) |
 
 ## MCPs

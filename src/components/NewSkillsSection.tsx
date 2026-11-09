@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { newSkills, orchestrationCopy } from "../data";
 import type { MultiSelectControls } from "../types";
+import { OPEN_RELEASE_EVENT } from "../releaseNav";
 import { ExpandableInstallCard } from "./ExpandableInstallCard";
 
 type NewSkillsSectionProps = {
@@ -10,8 +11,14 @@ type NewSkillsSectionProps = {
 export function NewSkillsSection({ multiSelect }: NewSkillsSectionProps) {
   const [expanded, setExpanded] = useState<number | null>(null);
 
+  useEffect(() => {
+    const open = () => setExpanded(0);
+    window.addEventListener(OPEN_RELEASE_EVENT, open);
+    return () => window.removeEventListener(OPEN_RELEASE_EVENT, open);
+  }, []);
+
   return (
-    <section id="new" className="favorites-section" aria-labelledby="new-title">
+    <section id="new" className="favorites-section new-section" aria-labelledby="new-title">
       <div className="section-header">
         <div>
           <span className="section-eyebrow">New in this release</span>
