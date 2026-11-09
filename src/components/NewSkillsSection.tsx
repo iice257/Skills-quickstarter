@@ -16,9 +16,9 @@ export function NewSkillsSection({ multiSelect }: NewSkillsSectionProps) {
         <div>
           <span className="section-eyebrow">New in this release</span>
           <h2 id="new-title">
-            Deep think,
+            See it, hear it,
             <br />
-            orchestrate, ship.
+            then build it.
           </h2>
         </div>
         <p>{orchestrationCopy}</p>

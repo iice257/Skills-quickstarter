@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sound options</title>
+<style>
+  :root { --bg: #0b0b0c; --panel: #141416; --ink: #f2f1ec; --muted: rgba(242,241,236,.6); --line: rgba(242,241,236,.12); --accent: #9fd8ff;
+    --font: system-ui, -apple-system, "Segoe UI", sans-serif; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 var(--font); }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 32px 16px 80px; }
+  h1 { margin: 0 0 4px; font-size: 20px; font-weight: 600; }
+  .meta { color: var(--muted); font-size: 13px; margin: 0 0 24px; }
+  .context { display: grid; gap: 12px; padding: 16px; border: 1px solid var(--line); border-radius: 14px; margin-bottom: 20px; }
+  .context label { display: flex; gap: 10px; align-items: center; font-size: 14px; }
+  .context input[type="range"] { flex: 1; accent-color: var(--accent); }
+  .context small { color: var(--muted); }
+  ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  li { display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; padding: 14px 16px;
+    border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+  li.playing { border-color: var(--accent); }
+  .play { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--ink); color: var(--bg); cursor: pointer;
+    display: grid; place-items: center; font-size: 15px; }
+  .play:focus-visible, .pick:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .name { font-weight: 600; } .name b { color: var(--accent); margin-right: 6px; }
+  .note { color: var(--muted); font-size: 13px; }
+  .pick { border: 1px solid var(--line); background: none; color: var(--ink); font: inherit; font-size: 13px; padding: 6px 14px; border-radius: 999px; cursor: pointer; }
+  .pick:hover { border-color: var(--accent); color: var(--accent); }
+  .keys { color: var(--muted); font-size: 12px; margin-top: 16px; }
+  details { margin-top: 24px; color: var(--muted); }
+  .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); opacity: 0; padding: 10px 16px; border-radius: 999px;
+    background: var(--ink); color: var(--bg); font-size: 13px; transition: .25s; pointer-events: none; }
+  .toast.on { opacity: 1; transform: translate(-50%, 0); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>{{What the sound is for}}</h1>
+  <p class="meta">Round 1 / press play (audio starts on your first click), then pick one or remix ("B but shorter").</p>
+
+  <div class="context">
+    <label><input type="checkbox" id="bed"> Play over a quiet ambient bed</label>
+    <label>Progress <input type="range" id="progress" min="0" max="1" step="0.001" value="0"> <small id="progressOut">0.00</small></label>
+    <small>For motion-linked sounds: dragging the slider past each candidate's <code>at</code> threshold fires it, the way scroll would.</small>
+  </div>
+
+  <ol id="list"></ol>
+  <p class="keys">Keys: 1-5 play a candidate, space stops everything.</p>
+  <details><summary>Previous round</summary><ol id="previous"></ol></details>
+</div>
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ---------- Engine: replace with the project's own helpers when it has them ---------- */
+let ctx, master, limiter, bedNode;
+function audio() {
+  if (ctx) return ctx;
+  ctx = new (window.AudioContext || window.webkitAudioContext)();
+  limiter = ctx.createDynamicsCompressor();
+  limiter.threshold.value = -6; limiter.knee.value = 4; limiter.ratio.value = 12; limiter.attack.value = 0.003; limiter.release.value = 0.12;
+  master = ctx.createGain(); master.gain.value = 0.8;
+  master.connect(limiter).connect(ctx.destination);
+  return ctx;
+}
+const SCALE = [0, 2, 4, 7, 9]; // pentatonic offsets
+const noteHz = (root, step) => root * Math.pow(2, (SCALE[((step % 5) + 5) % 5] + 12 * Math.floor(step / 5)) / 12);
+
+// tone(ctx, out, t, { freq, type, attack, decay, gain, glideTo })
+function tone(c, out, t, { freq = 440, type = "sine", attack = 0.005, decay = 0.25, gain = 0.3, glideTo } = {}) {
+  const o = c.createOscillator(), g = c.createGain();
+  o.type = type; o.frequency.setValueAtTime(freq, t);
+  if (glideTo) o.frequency.exponentialRampToValueAtTime(glideTo, t + attack + decay);
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(gain, t + attack);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + attack + decay);
+  o.connect(g).connect(out); o.start(t); o.stop(t + attack + decay + 0.05);
+}
+let noiseBuf;
+function noise(c) {
+  if (noiseBuf) return noiseBuf;
+  noiseBuf = c.createBuffer(1, c.sampleRate * 2, c.sampleRate);
+  const d = noiseBuf.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+  return noiseBuf;
+}
+// sweep(ctx, out, t, { from, to, dur, q, gain, type }): filtered noise whoosh
+function sweep(c, out, t, { from = 300, to = 3000, dur = 0.6, q = 6, gain = 0.25, type = "bandpass" } = {}) {
+  const s = c.createBufferSource(), f = c.createBiquadFilter(), g = c.createGain();
+  s.buffer = noise(c); f.type = type; f.Q.value = q;
+  f.frequency.setValueAtTime(from, t); f.frequency.exponentialRampToValueAtTime(to, t + dur);
+  g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(gain, t + dur * 0.35); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+  s.connect(f).connect(g).connect(out); s.start(t); s.stop(t + dur + 0.05);
+}
+// click(ctx, out, t, { freq, gain }): very short filtered tick
+function click(c, out, t, { freq = 2400, gain = 0.3 } = {}) {
+  const s = c.createBufferSource(), f = c.createBiquadFilter(), g = c.createGain();
+  s.buffer = noise(c); f.type = "highpass"; f.frequency.value = freq;
+  g.gain.setValueAtTime(gain, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.03);
+  s.connect(f).connect(g).connect(out); s.start(t); s.stop(t + 0.05);
+}
+function bed(on) {
+  const c = audio();
+  if (!on) { if (bedNode) { bedNode.gain.setTargetAtTime(0, c.currentTime, 0.3); const n = bedNode; setTimeout(() => n.disconnect(), 1500); bedNode = null; } return; }
+  bedNode = c.createGain(); bedNode.gain.value = 0; bedNode.connect(master);
+  [146.83, 220, 293.66].forEach((f) => { const o = c.createOscillator(), lp = c.createBiquadFilter(); o.type = "triangle"; o.frequency.value = f; lp.type = "lowpass"; lp.frequency.value = 600; o.connect(lp).connect(bedNode); o.start(); });
+  bedNode.gain.setTargetAtTime(0.05, c.currentTime, 0.6);
+}
+
+/* ---------- Candidates: fill 3-5. `at` (0-1) is optional, for the progress slider ---------- */
+const CANDIDATES = [
+  { name: "Glass tap", note: "bright, tiny, 120 ms", play: (c, out, t) => { tone(c, out, t, { freq: noteHz(587.33, 0), decay: 0.12, gain: 0.25 }); tone(c, out, t, { freq: noteHz(587.33, 7), decay: 0.09, gain: 0.08 }); } },
+  { name: "Soft rise", note: "airy whoosh into a note, 0.9 s", at: 0.05, play: (c, out, t) => { sweep(c, out, t, { from: 220, to: 2800, dur: 0.8 }); tone(c, out, t + 0.6, { freq: noteHz(293.66, 4), decay: 0.5, gain: 0.15 }); } },
+  { name: "Low thump", note: "warm, felt more than heard, 250 ms", play: (c, out, t) => { tone(c, out, t, { freq: 140, glideTo: 60, decay: 0.22, gain: 0.5 }); click(c, out, t, { freq: 1800, gain: 0.08 }); } },
+];
+
+/* ---------- UI ---------- */
+const LETTERS = "ABCDE";
+const list = document.getElementById("list");
+const toast = document.querySelector(".toast");
+const say = (text) => { toast.textContent = text; toast.classList.add("on"); clearTimeout(say.t); say.t = setTimeout(() => toast.classList.remove("on"), 1600); };
+let voiceBus;
+function playCandidate(i) {
+  const c = audio(); if (c.state === "suspended") c.resume();
+  const item = CANDIDATES[i]; if (!item) return;
+  voiceBus = voiceBus || c.createGain(); voiceBus.connect(master);
+  const row = list.children[i]; row.classList.add("playing"); setTimeout(() => row.classList.remove("playing"), 600);
+  item.play(c, voiceBus, c.currentTime + 0.01);
+}
+function stopAll() { if (!voiceBus) return; voiceBus.disconnect(); voiceBus = null; }
+CANDIDATES.forEach((item, i) => {
+  const li = document.createElement("li");
+  li.innerHTML = `<button class="play" type="button" aria-label="Play ${LETTERS[i]}">&#9654;</button>
+    <div><div class="name"><b>${LETTERS[i]}</b>${item.name}</div><div class="note">${item.note}</div></div>
+    <button class="pick" type="button">Pick ${LETTERS[i]}</button>`;
+  li.querySelector(".play").addEventListener("click", () => playCandidate(i));
+  li.querySelector(".pick").addEventListener("click", async () => {
+    const text = `Pick ${LETTERS[i]} (${item.name})`;
+    try { await navigator.clipboard.writeText(text); say(`"${text}" copied. Paste it in chat.`); } catch { say(`Tell the agent: ${text}`); }
+  });
+  list.appendChild(li);
+});
+document.getElementById("bed").addEventListener("change", (e) => bed(e.target.checked));
+const progress = document.getElementById("progress"), progressOut = document.getElementById("progressOut");
+let lastP = 0;
+progress.addEventListener("input", () => {
+  const p = Number(progress.value); progressOut.textContent = p.toFixed(2);
+  CANDIDATES.forEach((item, i) => { if (item.at != null && lastP < item.at && p >= item.at) playCandidate(i); });
+  lastP = p;
+});
+addEventListener("keydown", (e) => {
+  if (e.target.closest("input")) return;
+  if (e.key >= "1" && e.key <= "5") playCandidate(Number(e.key) - 1);
+  if (e.key === " ") { e.preventDefault(); stopAll(); }
+});
+</script>
+</body>
+</html>

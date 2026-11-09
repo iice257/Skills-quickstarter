@@ -1,6 +1,9 @@
 # Skill Starter Pack - AI agent/harness essentials
 
 > [!NOTE]
+> **Release note, 9 Nov 2026: new original pack.**
+> - [`sensory`](https://github.com/iice257/Skills/tree/main/all/sensory): prototype before you build. [`visual-brainstorming`](https://github.com/iice257/Skills/tree/main/all/sensory/visual-brainstorming) mocks up 3-5 side-by-side options from your project's real fonts, tokens and images; [`sound-brainstorming`](https://github.com/iice257/Skills/tree/main/all/sensory/sound-brainstorming) synthesises 3-5 Web Audio candidates you can play in context. Pick or remix, then the agent builds the winner.
+>
 > **Release note, 7 Nov 2026: new original.**
 > - [`deep-think`](https://github.com/iice257/Skills/tree/main/all/deep-think): a five-lens first-principles pressure test for designs and plans (constraints, rebuild from zero, the architect's first rewrite, the day-one breaking test, the disappearing abstraction), gated so it only runs on expensive-to-reverse decisions. Includes an implicit-state-machine audit.
 >
