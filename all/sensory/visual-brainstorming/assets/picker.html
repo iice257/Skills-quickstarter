@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visual options</title>
+<!-- Replace with the project's real fonts and tokens. -->
+<style>
+  :root {
+    --bg: #0b0b0c; --panel: #141416; --ink: #f2f1ec; --muted: rgba(242,241,236,.6);
+    --line: rgba(242,241,236,.12); --accent: #9fd8ff;
+    --font: system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 var(--font); }
+  header.bar { position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+    justify-content: space-between; padding: 14px 20px; background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .bar h1 { margin: 0; font-size: 14px; font-weight: 600; letter-spacing: .02em; }
+  .bar .meta { color: var(--muted); font-size: 13px; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .seg button { border: 0; background: none; color: var(--muted); font: inherit; font-size: 13px; padding: 6px 14px; border-radius: 999px; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+  main { display: grid; gap: 28px; padding: 24px 20px 80px; }
+  .option { display: grid; gap: 10px; }
+  .option-head { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; flex-wrap: wrap; }
+  .option-head h2 { margin: 0; font-size: 15px; font-weight: 600; }
+  .option-head h2 b { display: inline-grid; place-items: center; width: 26px; height: 26px; margin-right: 8px;
+    border-radius: 50%; background: var(--ink); color: var(--bg); font-size: 13px; }
+  .option-head p { margin: 0; color: var(--muted); font-size: 13px; }
+  .pick { border: 1px solid var(--line); background: none; color: var(--ink); font: inherit; font-size: 13px;
+    padding: 6px 14px; border-radius: 999px; cursor: pointer; }
+  .pick:hover { border-color: var(--accent); color: var(--accent); }
+  .frame { width: 100%; margin: 0 auto; border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
+    background: var(--panel); transition: max-width .35s cubic-bezier(.22,1,.36,1); container-type: inline-size; }
+  body[data-view="mobile"] .frame { max-width: 390px; }
+  .frame > .canvas { min-height: 420px; }
+  details.history { margin-top: 24px; color: var(--muted); }
+  .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); opacity: 0; padding: 10px 16px;
+    border-radius: 999px; background: var(--ink); color: var(--bg); font-size: 13px; transition: .25s; pointer-events: none; }
+  .toast.on { opacity: 1; transform: translate(-50%, 0); }
+  @media (max-width: 600px) { main { padding: 16px 16px 64px; } }
+</style>
+</head>
+<body data-view="desktop">
+<header class="bar">
+  <div>
+    <h1>{{What we are designing}}</h1>
+    <div class="meta">Round 1 / pick one, or remix ("B but tighter")</div>
+  </div>
+  <div class="seg" role="group" aria-label="Viewport">
+    <button type="button" data-view="desktop" aria-pressed="true">Desktop</button>
+    <button type="button" data-view="mobile" aria-pressed="false">Mobile</button>
+  </div>
+</header>
+
+<main>
+  <!-- One section per option. Build each canvas from the project's real tokens, assets and copy. -->
+  <section class="option" id="A">
+    <div class="option-head">
+      <h2><b>A</b>{{Name}}</h2>
+      <p>{{One-line take}}</p>
+      <button class="pick" type="button" data-pick="A">Pick A</button>
+    </div>
+    <div class="frame"><div class="canvas">
+      <!-- option A markup -->
+    </div></div>
+  </section>
+
+  <section class="option" id="B">
+    <div class="option-head">
+      <h2><b>B</b>{{Name}}</h2>
+      <p>{{One-line take}}</p>
+      <button class="pick" type="button" data-pick="B">Pick B</button>
+    </div>
+    <div class="frame"><div class="canvas">
+      <!-- option B markup -->
+    </div></div>
+  </section>
+
+  <section class="option" id="C">
+    <div class="option-head">
+      <h2><b>C</b>{{Name}}</h2>
+      <p>{{One-line take}}</p>
+      <button class="pick" type="button" data-pick="C">Pick C</button>
+    </div>
+    <div class="frame"><div class="canvas">
+      <!-- option C markup -->
+    </div></div>
+  </section>
+
+  <!-- Earlier rounds go here, collapsed. -->
+  <details class="history"><summary>Earlier rounds</summary></details>
+</main>
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script>
+  const toast = document.querySelector(".toast");
+  const say = (text) => { toast.textContent = text; toast.classList.add("on"); clearTimeout(say.t); say.t = setTimeout(() => toast.classList.remove("on"), 1600); };
+  document.querySelectorAll(".seg button").forEach((button) => button.addEventListener("click", () => {
+    document.body.dataset.view = button.dataset.view;
+    document.querySelectorAll(".seg button").forEach((b) => b.setAttribute("aria-pressed", String(b === button)));
+  }));
+  document.querySelectorAll("[data-pick]").forEach((button) => button.addEventListener("click", async () => {
+    const text = `Pick ${button.dataset.pick}`;
+    try { await navigator.clipboard.writeText(text); say(`"${text}" copied. Paste it in chat.`); }
+    catch { say(`Tell the agent: ${text}`); }
+  }));
+</script>
+</body>
+</html>

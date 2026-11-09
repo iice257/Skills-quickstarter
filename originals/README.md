@@ -26,3 +26,4 @@ For installation, the most reliable paths are the matching canonical copies unde
 | `ship` | `all/ship` |
 | `orchestrate` | `all/orchestrate` |
 | `deep-think` | `all/deep-think` |
+| `sensory` | `all/sensory` |
